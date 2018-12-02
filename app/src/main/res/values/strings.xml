@@ -1,4 +1,26 @@
 <resources>
     <string name="app_name">AppBecas</string>
     <string name="title_activity_maps">Map</string>
+    <string name="btn_send">Enviar</string>
+    <string name="transport">Seleccione cuántos medios de transporte utiliza para llegar a la escuela.</string>
+    <string name="warning">Para hacer tu ruta de transporte debes estar en tu domicilio de residencia</string>
+    <string name="route">Ruta de transporte</string>
+    <string name="pdf">Crear PDF</string>
+    <string name="show">Mostrar</string>
+    <string name="main_menu">Página principal</string>
+
+    <string-array name="transport_quantity">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+
+    <string-array name="route">
+        <item>Casa - ESCOM</item>
+    </string-array>
 </resources>
