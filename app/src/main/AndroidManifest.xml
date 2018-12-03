@@ -34,6 +34,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Mapa" />
+        <activity android:name=".Transporte"/>
     </application>
 
 </manifest>
