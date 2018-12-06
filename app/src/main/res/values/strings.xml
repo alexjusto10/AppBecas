@@ -8,6 +8,20 @@
     <string name="pdf">Crear PDF</string>
     <string name="show">Mostrar</string>
     <string name="main_menu">Página principal</string>
+    <string name="transport_price">Indique qué transporte utiliza, que precio tiene y las direcciones de subida y de bjada del mismo.</string>
+    <string name="vehicles1">De tu hogar a:</string>
+    <string name="vehicles2">De la dirección anterior a:</string>
+    <string name="vehicles3">De la dirección anterior a ESCOM</string>
+    <string name="vehicles4">De tu hogar a ESCOM</string>
+    <string name="address">Intoduce tu dirección</string>
+    <string name="address_title">Dirección</string>
+    <string name="price_title">Costo</string>
+    <string name="type_title">Tipo</string>
+    <string name="hint_address">Dirección de destino</string>
+    <string name="hint_price">1.5</string>
+    <string name="hint_change">ESCOM</string>
+    <string name="price">Precio: $</string>
+    <string name="type">Transporte: </string>
 
     <string-array name="transport_quantity">
         <item>1</item>
@@ -21,6 +35,17 @@
     </string-array>
 
     <string-array name="route">
-        <item>Casa - ESCOM</item>
+
+    </string-array>
+
+    <string-array name="vehicles">
+        <item>Camión</item>
+        <item>Automóvil particular</item>
+        <item>Combie/Microbús</item>
+        <item>Taxi</item>
+        <item>Metro</item>
+        <item>Metrobús</item>
+        <item>Mexibús</item>
+        <item>Tren subúrbano</item>
     </string-array>
 </resources>

@@ -1,6 +1,706 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/txt_vehicles3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/vehicles2"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_address2"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/edit_address3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="150dp"
+            android:hint="@string/hint_address"
+            android:imeOptions="actionSearch"
+            android:inputType="textCapWords"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_vehicles3"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/edit_price3"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="100dp"
+            android:hint="@string/hint_price"
+            android:inputType="numberDecimal"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_address3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/edit_address3"
+            app:layout_constraintTop_toTopOf="@+id/edit_address3" />
+
+        <TextView
+            android:id="@+id/txt_peso3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="$"
+            android:textAppearance="@android:style/TextAppearance.Material.Large"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_price3"
+            app:layout_constraintEnd_toStartOf="@+id/edit_price3"
+            app:layout_constraintHorizontal_bias="0.666"
+            app:layout_constraintStart_toEndOf="@+id/edit_address3"
+            app:layout_constraintTop_toTopOf="@+id/edit_price3" />
+
+        <Spinner
+            android:id="@+id/spinn_type3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="16dp"
+            android:entries="@array/vehicles"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_address3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/txt_peso3"
+            app:layout_constraintTop_toTopOf="@+id/edit_address3"></Spinner>
+
+        <EditText
+            android:id="@+id/edit_address1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="150dp"
+            android:hint="@string/hint_address"
+            android:imeOptions="actionSearch"
+            android:inputType="textCapWords"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_vehicle1"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/edit_address2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="150dp"
+            android:hint="@string/hint_address"
+            android:imeOptions="actionSearch"
+            android:inputType="textCapWords"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_vehicles2"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/edit_price1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="100dp"
+            android:hint="@string/hint_price"
+            android:inputType="numberDecimal"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_address1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/edit_address1"
+            app:layout_constraintTop_toTopOf="@+id/edit_address1"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/edit_price2"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="100dp"
+            android:hint="@string/hint_price"
+            android:inputType="numberDecimal"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_address2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/edit_address2"
+            app:layout_constraintTop_toTopOf="@+id/edit_address2" />
+
+        <Spinner
+            android:id="@+id/spinn_type1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="16dp"
+            android:entries="@array/vehicles"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_address1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/txt_peso1"
+            app:layout_constraintTop_toTopOf="@+id/edit_address1"
+            app:layout_constraintVertical_bias="0.0"></Spinner>
+
+        <Spinner
+            android:id="@+id/spinn_type2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="16dp"
+            android:entries="@array/vehicles"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_address2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/edit_address2"
+            app:layout_constraintTop_toTopOf="@+id/edit_address2"></Spinner>
+
+        <TextView
+            android:id="@+id/txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/route"
+            android:textAppearance="@android:style/TextAppearance.Material.Large"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/txt_peso1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="$"
+            android:textAppearance="@android:style/TextAppearance.Material.Large"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_price1"
+            app:layout_constraintEnd_toStartOf="@+id/edit_price1"
+            app:layout_constraintHorizontal_bias="0.456"
+            app:layout_constraintStart_toEndOf="@+id/edit_address1"
+            app:layout_constraintTop_toTopOf="@+id/edit_price1"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/txt_peso2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="$"
+            android:textAppearance="@android:style/TextAppearance.Material.Large"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_price2"
+            app:layout_constraintEnd_toStartOf="@+id/edit_price2"
+            app:layout_constraintHorizontal_bias="0.666"
+            app:layout_constraintStart_toEndOf="@+id/edit_address2"
+            app:layout_constraintTop_toTopOf="@+id/edit_price2" />
+
+        <TextView
+            android:id="@+id/txt_transportInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/transport_price"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_title"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/txt_address_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/address_title"
+            android:textAlignment="center"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/edit_address8"
+            app:layout_constraintStart_toStartOf="@+id/edit_address8"
+            app:layout_constraintTop_toBottomOf="@+id/txt_transportInfo" />
+
+        <TextView
+            android:id="@+id/txt_price_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/price_title"
+            android:textAlignment="center"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/edit_price8"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/txt_peso8"
+            app:layout_constraintTop_toBottomOf="@+id/txt_transportInfo" />
+
+        <TextView
+            android:id="@+id/txt_type_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/type_title"
+            android:textAlignment="center"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/spinn_type8"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/spinn_type8"
+            app:layout_constraintTop_toBottomOf="@+id/txt_transportInfo" />
+
+        <TextView
+            android:id="@+id/txt_vehicle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/vehicles1"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_address_title"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/txt_vehicles2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/vehicles2"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_address1"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/txt_vehicles4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/vehicles2"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_address3"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/edit_address4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="150dp"
+            android:hint="@string/hint_address"
+            android:imeOptions="actionSearch"
+            android:inputType="textCapWords"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_vehicles4"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/edit_price4"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="100dp"
+            android:hint="@string/hint_price"
+            android:inputType="numberDecimal"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_address4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/edit_address4"
+            app:layout_constraintTop_toTopOf="@+id/edit_address4" />
+
+        <TextView
+            android:id="@+id/txt_peso4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="$"
+            android:textAppearance="@android:style/TextAppearance.Material.Large"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_price4"
+            app:layout_constraintEnd_toStartOf="@+id/edit_price4"
+            app:layout_constraintHorizontal_bias="0.666"
+            app:layout_constraintStart_toEndOf="@+id/edit_address4"
+            app:layout_constraintTop_toTopOf="@+id/edit_price4" />
+
+        <Spinner
+            android:id="@+id/spinn_type4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="16dp"
+            android:entries="@array/vehicles"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_address4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/txt_peso4"
+            app:layout_constraintTop_toTopOf="@+id/edit_address4"></Spinner>
+
+        <TextView
+            android:id="@+id/txt_vehicles5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/vehicles2"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_address4"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/edit_address5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="150dp"
+            android:hint="@string/hint_address"
+            android:imeOptions="actionSearch"
+            android:inputType="textCapWords"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_vehicles5"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/edit_price5"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="100dp"
+            android:hint="@string/hint_price"
+            android:inputType="numberDecimal"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_address5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/edit_address5"
+            app:layout_constraintTop_toTopOf="@+id/edit_address5" />
+
+        <TextView
+            android:id="@+id/txt_peso5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="$"
+            android:textAppearance="@android:style/TextAppearance.Material.Large"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_price5"
+            app:layout_constraintEnd_toStartOf="@+id/edit_price5"
+            app:layout_constraintHorizontal_bias="0.666"
+            app:layout_constraintStart_toEndOf="@+id/edit_address5"
+            app:layout_constraintTop_toTopOf="@+id/edit_price5" />
+
+        <Spinner
+            android:id="@+id/spinn_type5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="16dp"
+            android:entries="@array/vehicles"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_address5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/edit_address5"
+            app:layout_constraintTop_toTopOf="@+id/edit_address5"></Spinner>
+
+        <TextView
+            android:id="@+id/txt_vehicles6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/vehicles2"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_address5"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/edit_address6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="150dp"
+            android:hint="@string/hint_address"
+            android:imeOptions="actionSearch"
+            android:inputType="textCapWords"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_vehicles6"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/edit_price6"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="100dp"
+            android:hint="@string/hint_price"
+            android:inputType="numberDecimal"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_address6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/edit_address6"
+            app:layout_constraintTop_toTopOf="@+id/edit_address6" />
+
+        <TextView
+            android:id="@+id/txt_peso6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="$"
+            android:textAppearance="@android:style/TextAppearance.Material.Large"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_price6"
+            app:layout_constraintEnd_toStartOf="@+id/edit_price6"
+            app:layout_constraintHorizontal_bias="0.666"
+            app:layout_constraintStart_toEndOf="@+id/edit_address6"
+            app:layout_constraintTop_toTopOf="@+id/edit_price6" />
+
+        <Spinner
+            android:id="@+id/spinn_type6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="16dp"
+            android:entries="@array/vehicles"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_address6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/edit_address6"
+            app:layout_constraintTop_toTopOf="@+id/edit_address6"></Spinner>
+
+        <TextView
+            android:id="@+id/txt_vehicles7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/vehicles2"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_address6"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/edit_address7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="150dp"
+            android:hint="@string/hint_address"
+            android:imeOptions="actionSearch"
+            android:inputType="textCapWords"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_vehicles7"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/edit_price7"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="100dp"
+            android:hint="@string/hint_price"
+            android:inputType="numberDecimal"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_address7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/edit_address7"
+            app:layout_constraintTop_toTopOf="@+id/edit_address7" />
+
+        <TextView
+            android:id="@+id/txt_peso7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="$"
+            android:textAppearance="@android:style/TextAppearance.Material.Large"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_price7"
+            app:layout_constraintEnd_toStartOf="@+id/edit_price7"
+            app:layout_constraintHorizontal_bias="0.666"
+            app:layout_constraintStart_toEndOf="@+id/edit_address7"
+            app:layout_constraintTop_toTopOf="@+id/edit_price7" />
+
+        <Spinner
+            android:id="@+id/spinn_type7"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="16dp"
+            android:entries="@array/vehicles"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_address7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/txt_peso7"
+            app:layout_constraintTop_toTopOf="@+id/edit_address7"></Spinner>
+
+        <TextView
+            android:id="@+id/txt_vehicles8"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/vehicles3"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_address7"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/edit_address8"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="150dp"
+            android:hint="@string/hint_address"
+            android:imeOptions="actionSearch"
+            android:inputType="textCapWords"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_vehicles8"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/edit_price8"
+            style="@android:style/Widget.Material.EditText"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="100dp"
+            android:hint="@string/hint_price"
+            android:inputType="numberDecimal"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_address8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/edit_address8"
+            app:layout_constraintTop_toBottomOf="@+id/txt_vehicles8" />
+
+        <TextView
+            android:id="@+id/txt_peso8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="$"
+            android:textAppearance="@android:style/TextAppearance.Material.Large"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_price8"
+            app:layout_constraintEnd_toStartOf="@+id/edit_price8"
+            app:layout_constraintHorizontal_bias="0.666"
+            app:layout_constraintStart_toEndOf="@+id/edit_address8"
+            app:layout_constraintTop_toTopOf="@+id/edit_price8" />
+
+        <Spinner
+            android:id="@+id/spinn_type8"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="16dp"
+            android:entries="@array/vehicles"
+            app:layout_constraintBottom_toBottomOf="@+id/edit_address8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/edit_address8"
+            app:layout_constraintTop_toTopOf="@+id/edit_address8"></Spinner>
+
+        <Button
+            android:id="@+id/btn_send"
+            style="@android:style/Widget.Material.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@android:color/holo_green_light"
+            android:text="@string/btn_send"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_address8" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
