@@ -22,7 +22,7 @@
         app:layout_constraintHorizontal_bias="0.971"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.503" />
+        app:layout_constraintVertical_bias="0.503" tools:targetApi="m"/>
 
     <Spinner
         android:id="@+id/spin_cantidad"
