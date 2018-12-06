@@ -38,8 +38,8 @@
         <activity android:name=".Mapa" />
         <activity android:name=".Transporte"/>
         <activity android:name=".Convocatorias"/>
-        <activity android:name=".activity_login"/>
-        <activity android:name=".activity_registro"/>
+        <activity android:name=".Login"/>
+        <activity android:name=".Registro"/>
     </application>
 
 </manifest>

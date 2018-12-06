@@ -30,4 +30,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.itextpdf:itextg:5.5.10'
+    implementation files('src/main/java/escom/ipn/mx/appbecas/activation.jar')
+    implementation files('src/main/java/escom/ipn/mx/appbecas/additionnal.jar')
+    implementation files('src/main/java/escom/ipn/mx/appbecas/mail.jar')
 }
