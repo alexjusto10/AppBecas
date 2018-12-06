@@ -36,12 +36,12 @@ import java.util.ArrayList;
 import escom.ipn.mx.appbecas.directionhelpers.FetchURL;
 import escom.ipn.mx.appbecas.directionhelpers.TaskLoadedCallback;
 
-public class Mapa extends FragmentActivity implements OnMapReadyCallback,TaskLoadedCallback {
+public class Mapa extends FragmentActivity implements OnMapReadyCallback, TaskLoadedCallback {
     private GoogleMap mMap;
-    private MarkerOptions lugarOrigen, escom,destino1,destino2,destino3,destino4,destino5,destino6,destino7,destino8;
+    private MarkerOptions lugarOrigen, escom, destino1, destino2, destino3, destino4, destino5, destino6, destino7, destino8;
     private Polyline currentPolyline;
-    private Button btn_route,btn_main,btn_pdf;
-    private TextView txt_price,txt_type;
+    private Button btn_route, btn_main, btn_pdf;
+    private TextView txt_price, txt_type;
     private Spinner spinnDireccion;
     private static final int LOCATION_REQUEST = 500;
 
@@ -55,11 +55,11 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback,TaskLoa
                 && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,//Se solicitan los permisos
-                    Manifest.permission.ACCESS_COARSE_LOCATION},LOCATION_REQUEST);
+                    Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_REQUEST);
         }
 
         requestLocation();
-        LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
         String bestProvider = lm.getBestProvider(criteria, false);
         Location location = lm.getLastKnownLocation(bestProvider);//Obtiene las coordenadas actuales
@@ -71,40 +71,40 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback,TaskLoa
         txt_price = findViewById(R.id.txt_price);
         txt_type = findViewById(R.id.txt_type);
 
-        Intent intent=getIntent();
-        int posicion = intent.getIntExtra("posicion",1);
-        Double lat1 = intent.getDoubleExtra("lat1",0);
-        Double lng1 = intent.getDoubleExtra("lng1",0);
+        Intent intent = getIntent();
+        int posicion = intent.getIntExtra("posicion", 1);
+        Double lat1 = intent.getDoubleExtra("lat1", 0);
+        Double lng1 = intent.getDoubleExtra("lng1", 0);
         final String precio1 = intent.getStringExtra("precio1");
         final String tipo1 = intent.getStringExtra("tipo1");
         final String edit1 = intent.getStringExtra("edit1");
-        Double lat2 = intent.getDoubleExtra("lat2",0);
-        Double lng2 = intent.getDoubleExtra("lng2",0);
+        Double lat2 = intent.getDoubleExtra("lat2", 0);
+        Double lng2 = intent.getDoubleExtra("lng2", 0);
         final String precio2 = intent.getStringExtra("precio2");
         final String tipo2 = intent.getStringExtra("tipo2");
         final String edit2 = intent.getStringExtra("edit2");
-        Double lat3 = intent.getDoubleExtra("lat3",0);
-        Double lng3 = intent.getDoubleExtra("lng3",0);
+        Double lat3 = intent.getDoubleExtra("lat3", 0);
+        Double lng3 = intent.getDoubleExtra("lng3", 0);
         final String precio3 = intent.getStringExtra("precio3");
         final String tipo3 = intent.getStringExtra("tipo3");
         final String edit3 = intent.getStringExtra("edit3");
-        Double lat4 = intent.getDoubleExtra("lat4",0);
-        Double lng4 = intent.getDoubleExtra("lng4",0);
+        Double lat4 = intent.getDoubleExtra("lat4", 0);
+        Double lng4 = intent.getDoubleExtra("lng4", 0);
         final String precio4 = intent.getStringExtra("precio4");
         final String tipo4 = intent.getStringExtra("tipo4");
         final String edit4 = intent.getStringExtra("edit4");
-        Double lat5 = intent.getDoubleExtra("lat5",0);
-        Double lng5 = intent.getDoubleExtra("lng5",0);
+        Double lat5 = intent.getDoubleExtra("lat5", 0);
+        Double lng5 = intent.getDoubleExtra("lng5", 0);
         final String precio5 = intent.getStringExtra("precio5");
         final String tipo5 = intent.getStringExtra("tipo5");
         final String edit5 = intent.getStringExtra("edit5");
-        Double lat6 = intent.getDoubleExtra("lat6",0);
-        Double lng6 = intent.getDoubleExtra("lng6",0);
+        Double lat6 = intent.getDoubleExtra("lat6", 0);
+        Double lng6 = intent.getDoubleExtra("lng6", 0);
         final String precio6 = intent.getStringExtra("precio6");
         final String tipo6 = intent.getStringExtra("tipo6");
         final String edit6 = intent.getStringExtra("edit6");
-        Double lat7 = intent.getDoubleExtra("lat7",0);
-        Double lng7 = intent.getDoubleExtra("lng7",0);
+        Double lat7 = intent.getDoubleExtra("lat7", 0);
+        Double lng7 = intent.getDoubleExtra("lng7", 0);
         final String precio7 = intent.getStringExtra("precio7");
         final String tipo7 = intent.getStringExtra("tipo7");
         final String edit7 = intent.getStringExtra("edit7");
@@ -112,8 +112,8 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback,TaskLoa
         final String tipo8 = intent.getStringExtra("tipo8");
 
 
-        lugarOrigen = new MarkerOptions().position(new LatLng(latitud,longitud)).title("Casa");//Se define el lugar del marcador
-        escom = new MarkerOptions().position(new LatLng(19.5046539,-99.1468518)).title("ESCOM");
+        lugarOrigen = new MarkerOptions().position(new LatLng(latitud, longitud)).title("Casa");//Se define el lugar del marcador
+        escom = new MarkerOptions().position(new LatLng(19.5046539, -99.1468518)).title("ESCOM");
 
         MapFragment fragmentoMapa = (MapFragment) getFragmentManager().findFragmentById(R.id.fragmentoMapa);
         fragmentoMapa.getMapAsync(this);
@@ -123,7 +123,7 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback,TaskLoa
         spinnDireccion = findViewById(R.id.spinn_route);
 
 
-        switch (posicion){
+        switch (posicion) {
             case 1:
                 lista.add("Casa - ESCOM");
                 adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, lista);
@@ -133,59 +133,59 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback,TaskLoa
                 btn_route.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        trazarRuta(lugarOrigen,escom);
-                        txt_price.setText(getString(R.string.price)+precio1);
-                        txt_type.setText(getString(R.string.type)+" "+tipo1);
+                        trazarRuta(lugarOrigen, escom);
+                        txt_price.setText(getString(R.string.price) + precio1);
+                        txt_type.setText(getString(R.string.type) + " " + tipo1);
                     }
                 });
-            break;
+                break;
 
             case 2:
-                lista.add("Casa - "+edit1);
-                lista.add(edit1+" - ESCOM");
+                lista.add("Casa - " + edit1);
+                lista.add(edit1 + " - ESCOM");
                 adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, lista);
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinnDireccion.setAdapter(adapter);
-                destino1 = new MarkerOptions().position(new LatLng(lat1,lng1)).title(edit1);//Se define el lugar del marcador
+                destino1 = new MarkerOptions().position(new LatLng(lat1, lng1)).title(edit1);//Se define el lugar del marcador
 
                 btn_route.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(spinnDireccion.getSelectedItem().toString().equals("Casa - "+edit1)) {
-                            trazarRuta(lugarOrigen,destino1);
+                        if (spinnDireccion.getSelectedItem().toString().equals("Casa - " + edit1)) {
+                            trazarRuta(lugarOrigen, destino1);
                             txt_price.setText(getString(R.string.price) + precio1);
                             txt_type.setText(getString(R.string.type) + " " + tipo1);
-                        }else if (spinnDireccion.getSelectedItem().toString().equals(edit1+" - ESCOM")){
-                            trazarRuta(destino1,escom);
+                        } else if (spinnDireccion.getSelectedItem().toString().equals(edit1 + " - ESCOM")) {
+                            trazarRuta(destino1, escom);
                             txt_price.setText(getString(R.string.price) + precio2);
                             txt_type.setText(getString(R.string.type) + " " + tipo2);
                         }
                     }
                 });
-            break;
+                break;
 
             case 3:
-                lista.add("Casa - "+edit1);
-                lista.add(edit1+" - "+edit2);
-                lista.add(edit2+" - ESCOM");
+                lista.add("Casa - " + edit1);
+                lista.add(edit1 + " - " + edit2);
+                lista.add(edit2 + " - ESCOM");
                 adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, lista);
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinnDireccion.setAdapter(adapter);
-                destino1 = new MarkerOptions().position(new LatLng(lat1,lng1)).title(edit1);//Se define el lugar del marcador
-                destino2 = new MarkerOptions().position(new LatLng(lat2,lng2)).title(edit2);//Se define el lugar del marcador
+                destino1 = new MarkerOptions().position(new LatLng(lat1, lng1)).title(edit1);//Se define el lugar del marcador
+                destino2 = new MarkerOptions().position(new LatLng(lat2, lng2)).title(edit2);//Se define el lugar del marcador
 
                 btn_route.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(spinnDireccion.getSelectedItem().toString().equals("Casa - "+edit1)) {
-                            trazarRuta(lugarOrigen,destino1);
+                        if (spinnDireccion.getSelectedItem().toString().equals("Casa - " + edit1)) {
+                            trazarRuta(lugarOrigen, destino1);
                             txt_price.setText(getString(R.string.price) + precio1);
                             txt_type.setText(getString(R.string.type) + " " + tipo1);
-                        }else if (spinnDireccion.getSelectedItem().toString().equals(edit1+" - "+edit2)){
-                            trazarRuta(destino1,destino2);
+                        } else if (spinnDireccion.getSelectedItem().toString().equals(edit1 + " - " + edit2)) {
+                            trazarRuta(destino1, destino2);
                             txt_price.setText(getString(R.string.price) + precio2);
                             txt_type.setText(getString(R.string.type) + " " + tipo2);
-                        }else if (spinnDireccion.getSelectedItem().toString().equals(edit2+" - ESCOM")) {
+                        } else if (spinnDireccion.getSelectedItem().toString().equals(edit2 + " - ESCOM")) {
                             trazarRuta(destino2, escom);
                             txt_price.setText(getString(R.string.price) + precio3);
                             txt_type.setText(getString(R.string.type) + " " + tipo3);
@@ -195,33 +195,33 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback,TaskLoa
                 break;
 
             case 4:
-                lista.add("Casa - "+edit1);
-                lista.add(edit1+" - "+edit2);
-                lista.add(edit2+" - "+edit3);
-                lista.add(edit3+" - ESCOM");
+                lista.add("Casa - " + edit1);
+                lista.add(edit1 + " - " + edit2);
+                lista.add(edit2 + " - " + edit3);
+                lista.add(edit3 + " - ESCOM");
                 adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, lista);
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinnDireccion.setAdapter(adapter);
-                destino1 = new MarkerOptions().position(new LatLng(lat1,lng1)).title(edit1);//Se define el lugar del marcador
-                destino2 = new MarkerOptions().position(new LatLng(lat2,lng2)).title(edit2);//Se define el lugar del marcador
-                destino3 = new MarkerOptions().position(new LatLng(lat3,lng3)).title(edit3);//Se define el lugar del marcador
+                destino1 = new MarkerOptions().position(new LatLng(lat1, lng1)).title(edit1);//Se define el lugar del marcador
+                destino2 = new MarkerOptions().position(new LatLng(lat2, lng2)).title(edit2);//Se define el lugar del marcador
+                destino3 = new MarkerOptions().position(new LatLng(lat3, lng3)).title(edit3);//Se define el lugar del marcador
 
                 btn_route.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(spinnDireccion.getSelectedItem().toString().equals("Casa - "+edit1)) {
-                            trazarRuta(lugarOrigen,destino1);
+                        if (spinnDireccion.getSelectedItem().toString().equals("Casa - " + edit1)) {
+                            trazarRuta(lugarOrigen, destino1);
                             txt_price.setText(getString(R.string.price) + precio1);
                             txt_type.setText(getString(R.string.type) + " " + tipo1);
-                        }else if (spinnDireccion.getSelectedItem().toString().equals(edit1+" - "+edit2)) {
+                        } else if (spinnDireccion.getSelectedItem().toString().equals(edit1 + " - " + edit2)) {
                             trazarRuta(destino1, destino2);
                             txt_price.setText(getString(R.string.price) + precio2);
                             txt_type.setText(getString(R.string.type) + " " + tipo2);
-                        }else if (spinnDireccion.getSelectedItem().toString().equals(edit2+" - "+edit3)){
-                                trazarRuta(destino2,destino3);
-                                txt_price.setText(getString(R.string.price) + precio3);
-                                txt_type.setText(getString(R.string.type) + " " + tipo3);
-                        }else if (spinnDireccion.getSelectedItem().toString().equals(edit3+" - ESCOM")) {
+                        } else if (spinnDireccion.getSelectedItem().toString().equals(edit2 + " - " + edit3)) {
+                            trazarRuta(destino2, destino3);
+                            txt_price.setText(getString(R.string.price) + precio3);
+                            txt_type.setText(getString(R.string.type) + " " + tipo3);
+                        } else if (spinnDireccion.getSelectedItem().toString().equals(edit3 + " - ESCOM")) {
                             trazarRuta(destino3, escom);
                             txt_price.setText(getString(R.string.price) + precio4);
                             txt_type.setText(getString(R.string.type) + " " + tipo4);
@@ -231,39 +231,39 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback,TaskLoa
                 break;
 
             case 5:
-                lista.add("Casa - "+edit1);
-                lista.add(edit1+" - "+edit2);
-                lista.add(edit2+" - "+edit3);
-                lista.add(edit3+" - "+edit4);
-                lista.add(edit4+" - ESCOM");
+                lista.add("Casa - " + edit1);
+                lista.add(edit1 + " - " + edit2);
+                lista.add(edit2 + " - " + edit3);
+                lista.add(edit3 + " - " + edit4);
+                lista.add(edit4 + " - ESCOM");
                 adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, lista);
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinnDireccion.setAdapter(adapter);
-                destino1 = new MarkerOptions().position(new LatLng(lat1,lng1)).title(edit1);//Se define el lugar del marcador
-                destino2 = new MarkerOptions().position(new LatLng(lat2,lng2)).title(edit2);//Se define el lugar del marcador
-                destino3 = new MarkerOptions().position(new LatLng(lat3,lng3)).title(edit3);//Se define el lugar del marcador
-                destino4 = new MarkerOptions().position(new LatLng(lat4,lng4)).title(edit4);//Se define el lugar del marcador
+                destino1 = new MarkerOptions().position(new LatLng(lat1, lng1)).title(edit1);//Se define el lugar del marcador
+                destino2 = new MarkerOptions().position(new LatLng(lat2, lng2)).title(edit2);//Se define el lugar del marcador
+                destino3 = new MarkerOptions().position(new LatLng(lat3, lng3)).title(edit3);//Se define el lugar del marcador
+                destino4 = new MarkerOptions().position(new LatLng(lat4, lng4)).title(edit4);//Se define el lugar del marcador
 
                 btn_route.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(spinnDireccion.getSelectedItem().toString().equals("Casa - "+edit1)) {
-                            trazarRuta(lugarOrigen,destino1);
+                        if (spinnDireccion.getSelectedItem().toString().equals("Casa - " + edit1)) {
+                            trazarRuta(lugarOrigen, destino1);
                             txt_price.setText(getString(R.string.price) + precio1);
                             txt_type.setText(getString(R.string.type) + " " + tipo1);
-                        }else if (spinnDireccion.getSelectedItem().toString().equals(edit1+" - "+edit2)) {
+                        } else if (spinnDireccion.getSelectedItem().toString().equals(edit1 + " - " + edit2)) {
                             trazarRuta(destino1, destino2);
                             txt_price.setText(getString(R.string.price) + precio2);
                             txt_type.setText(getString(R.string.type) + " " + tipo2);
-                        }else if (spinnDireccion.getSelectedItem().toString().equals(edit2+" - "+edit3)){
-                            trazarRuta(destino2,destino3);
+                        } else if (spinnDireccion.getSelectedItem().toString().equals(edit2 + " - " + edit3)) {
+                            trazarRuta(destino2, destino3);
                             txt_price.setText(getString(R.string.price) + precio3);
                             txt_type.setText(getString(R.string.type) + " " + tipo3);
-                        }else if (spinnDireccion.getSelectedItem().toString().equals(edit3+" - "+edit4)){
-                            trazarRuta(destino3,destino4);
+                        } else if (spinnDireccion.getSelectedItem().toString().equals(edit3 + " - " + edit4)) {
+                            trazarRuta(destino3, destino4);
                             txt_price.setText(getString(R.string.price) + precio4);
                             txt_type.setText(getString(R.string.type) + " " + tipo4);
-                        }else if (spinnDireccion.getSelectedItem().toString().equals(edit4+" - ESCOM")) {
+                        } else if (spinnDireccion.getSelectedItem().toString().equals(edit4 + " - ESCOM")) {
                             trazarRuta(destino4, escom);
                             txt_price.setText(getString(R.string.price) + precio5);
                             txt_type.setText(getString(R.string.type) + " " + tipo5);
@@ -273,46 +273,46 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback,TaskLoa
                 break;
 
             case 6:
-                lista.add("Casa - "+edit1);
-                lista.add(edit1+" - "+edit2);
-                lista.add(edit2+" - "+edit3);
-                lista.add(edit3+" - "+edit4);
-                lista.add(edit4+" - "+edit5);
-                lista.add(edit5+" - ESCOM");
+                lista.add("Casa - " + edit1);
+                lista.add(edit1 + " - " + edit2);
+                lista.add(edit2 + " - " + edit3);
+                lista.add(edit3 + " - " + edit4);
+                lista.add(edit4 + " - " + edit5);
+                lista.add(edit5 + " - ESCOM");
                 adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, lista);
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinnDireccion.setAdapter(adapter);
-                destino1 = new MarkerOptions().position(new LatLng(lat1,lng1)).title(edit1);//Se define el lugar del marcador
-                destino2 = new MarkerOptions().position(new LatLng(lat2,lng2)).title(edit2);//Se define el lugar del marcador
-                destino3 = new MarkerOptions().position(new LatLng(lat3,lng3)).title(edit3);//Se define el lugar del marcador
-                destino4 = new MarkerOptions().position(new LatLng(lat4,lng4)).title(edit4);//Se define el lugar del marcador
-                destino5 = new MarkerOptions().position(new LatLng(lat5,lng5)).title(edit5);//Se define el lugar del marcador
+                destino1 = new MarkerOptions().position(new LatLng(lat1, lng1)).title(edit1);//Se define el lugar del marcador
+                destino2 = new MarkerOptions().position(new LatLng(lat2, lng2)).title(edit2);//Se define el lugar del marcador
+                destino3 = new MarkerOptions().position(new LatLng(lat3, lng3)).title(edit3);//Se define el lugar del marcador
+                destino4 = new MarkerOptions().position(new LatLng(lat4, lng4)).title(edit4);//Se define el lugar del marcador
+                destino5 = new MarkerOptions().position(new LatLng(lat5, lng5)).title(edit5);//Se define el lugar del marcador
 
 
                 btn_route.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(spinnDireccion.getSelectedItem().toString().equals("Casa - "+edit1)) {
-                            trazarRuta(lugarOrigen,destino1);
+                        if (spinnDireccion.getSelectedItem().toString().equals("Casa - " + edit1)) {
+                            trazarRuta(lugarOrigen, destino1);
                             txt_price.setText(getString(R.string.price) + precio1);
                             txt_type.setText(getString(R.string.type) + " " + tipo1);
-                        }else if (spinnDireccion.getSelectedItem().toString().equals(edit1+" - "+edit2)) {
+                        } else if (spinnDireccion.getSelectedItem().toString().equals(edit1 + " - " + edit2)) {
                             trazarRuta(destino1, destino2);
                             txt_price.setText(getString(R.string.price) + precio2);
                             txt_type.setText(getString(R.string.type) + " " + tipo2);
-                        }else if (spinnDireccion.getSelectedItem().toString().equals(edit2+" - "+edit3)){
-                            trazarRuta(destino2,destino3);
+                        } else if (spinnDireccion.getSelectedItem().toString().equals(edit2 + " - " + edit3)) {
+                            trazarRuta(destino2, destino3);
                             txt_price.setText(getString(R.string.price) + precio3);
                             txt_type.setText(getString(R.string.type) + " " + tipo3);
-                        }else if (spinnDireccion.getSelectedItem().toString().equals(edit3+" - "+edit4)){
-                            trazarRuta(destino3,destino4);
+                        } else if (spinnDireccion.getSelectedItem().toString().equals(edit3 + " - " + edit4)) {
+                            trazarRuta(destino3, destino4);
                             txt_price.setText(getString(R.string.price) + precio4);
                             txt_type.setText(getString(R.string.type) + " " + tipo4);
-                        }else if (spinnDireccion.getSelectedItem().toString().equals(edit4+" - "+edit5)){
-                                trazarRuta(destino4,destino5);
-                                txt_price.setText(getString(R.string.price) + precio5);
-                                txt_type.setText(getString(R.string.type) + " " + tipo5);
-                        }else if (spinnDireccion.getSelectedItem().toString().equals(edit5+" - ESCOM")) {
+                        } else if (spinnDireccion.getSelectedItem().toString().equals(edit4 + " - " + edit5)) {
+                            trazarRuta(destino4, destino5);
+                            txt_price.setText(getString(R.string.price) + precio5);
+                            txt_type.setText(getString(R.string.type) + " " + tipo5);
+                        } else if (spinnDireccion.getSelectedItem().toString().equals(edit5 + " - ESCOM")) {
                             trazarRuta(destino5, escom);
                             txt_price.setText(getString(R.string.price) + precio6);
                             txt_type.setText(getString(R.string.type) + " " + tipo6);
@@ -322,51 +322,51 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback,TaskLoa
                 break;
 
             case 7:
-                lista.add("Casa - "+edit1);
-                lista.add(edit1+" - "+edit2);
-                lista.add(edit2+" - "+edit3);
-                lista.add(edit3+" - "+edit4);
-                lista.add(edit4+" - "+edit5);
-                lista.add(edit5+" - "+edit6);
-                lista.add(edit6+" - ESCOM");
+                lista.add("Casa - " + edit1);
+                lista.add(edit1 + " - " + edit2);
+                lista.add(edit2 + " - " + edit3);
+                lista.add(edit3 + " - " + edit4);
+                lista.add(edit4 + " - " + edit5);
+                lista.add(edit5 + " - " + edit6);
+                lista.add(edit6 + " - ESCOM");
                 adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, lista);
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinnDireccion.setAdapter(adapter);
-                destino1 = new MarkerOptions().position(new LatLng(lat1,lng1)).title(edit1);//Se define el lugar del marcador
-                destino2 = new MarkerOptions().position(new LatLng(lat2,lng2)).title(edit2);//Se define el lugar del marcador
-                destino3 = new MarkerOptions().position(new LatLng(lat3,lng3)).title(edit3);//Se define el lugar del marcador
-                destino4 = new MarkerOptions().position(new LatLng(lat4,lng4)).title(edit4);//Se define el lugar del marcador
-                destino5 = new MarkerOptions().position(new LatLng(lat5,lng5)).title(edit5);//Se define el lugar del marcador
-                destino6 = new MarkerOptions().position(new LatLng(lat6,lng6)).title(edit6);//Se define el lugar del marcador
+                destino1 = new MarkerOptions().position(new LatLng(lat1, lng1)).title(edit1);//Se define el lugar del marcador
+                destino2 = new MarkerOptions().position(new LatLng(lat2, lng2)).title(edit2);//Se define el lugar del marcador
+                destino3 = new MarkerOptions().position(new LatLng(lat3, lng3)).title(edit3);//Se define el lugar del marcador
+                destino4 = new MarkerOptions().position(new LatLng(lat4, lng4)).title(edit4);//Se define el lugar del marcador
+                destino5 = new MarkerOptions().position(new LatLng(lat5, lng5)).title(edit5);//Se define el lugar del marcador
+                destino6 = new MarkerOptions().position(new LatLng(lat6, lng6)).title(edit6);//Se define el lugar del marcador
 
                 btn_route.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(spinnDireccion.getSelectedItem().toString().equals("Casa - "+edit1)) {
-                            trazarRuta(lugarOrigen,destino1);
+                        if (spinnDireccion.getSelectedItem().toString().equals("Casa - " + edit1)) {
+                            trazarRuta(lugarOrigen, destino1);
                             txt_price.setText(getString(R.string.price) + precio1);
                             txt_type.setText(getString(R.string.type) + " " + tipo1);
-                        }else if (spinnDireccion.getSelectedItem().toString().equals(edit1+" - "+edit2)) {
+                        } else if (spinnDireccion.getSelectedItem().toString().equals(edit1 + " - " + edit2)) {
                             trazarRuta(destino1, destino2);
                             txt_price.setText(getString(R.string.price) + precio2);
                             txt_type.setText(getString(R.string.type) + " " + tipo2);
-                        }else if (spinnDireccion.getSelectedItem().toString().equals(edit2+" - "+edit3)){
-                            trazarRuta(destino2,destino3);
+                        } else if (spinnDireccion.getSelectedItem().toString().equals(edit2 + " - " + edit3)) {
+                            trazarRuta(destino2, destino3);
                             txt_price.setText(getString(R.string.price) + precio3);
                             txt_type.setText(getString(R.string.type) + " " + tipo3);
-                        }else if (spinnDireccion.getSelectedItem().toString().equals(edit3+" - "+edit4)) {
+                        } else if (spinnDireccion.getSelectedItem().toString().equals(edit3 + " - " + edit4)) {
                             trazarRuta(destino3, destino4);
                             txt_price.setText(getString(R.string.price) + precio4);
                             txt_type.setText(getString(R.string.type) + " " + tipo4);
-                        }else if (spinnDireccion.getSelectedItem().toString().equals(edit4+" - "+edit5)){
-                                trazarRuta(destino4,destino5);
-                                txt_price.setText(getString(R.string.price) + precio5);
-                                txt_type.setText(getString(R.string.type) + " " + tipo5);
-                        }else if (spinnDireccion.getSelectedItem().toString().equals(edit5+" - "+edit6)){
-                            trazarRuta(destino5,destino6);
+                        } else if (spinnDireccion.getSelectedItem().toString().equals(edit4 + " - " + edit5)) {
+                            trazarRuta(destino4, destino5);
+                            txt_price.setText(getString(R.string.price) + precio5);
+                            txt_type.setText(getString(R.string.type) + " " + tipo5);
+                        } else if (spinnDireccion.getSelectedItem().toString().equals(edit5 + " - " + edit6)) {
+                            trazarRuta(destino5, destino6);
                             txt_price.setText(getString(R.string.price) + precio6);
                             txt_type.setText(getString(R.string.type) + " " + tipo6);
-                        }else if (spinnDireccion.getSelectedItem().toString().equals(edit6+" - ESCOM")) {
+                        } else if (spinnDireccion.getSelectedItem().toString().equals(edit6 + " - ESCOM")) {
                             trazarRuta(destino6, escom);
                             txt_price.setText(getString(R.string.price) + precio7);
                             txt_type.setText(getString(R.string.type) + " " + tipo7);
@@ -376,57 +376,57 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback,TaskLoa
                 break;
 
             case 8:
-                lista.add("Casa - "+edit1);
-                lista.add(edit1+" - "+edit2);
-                lista.add(edit2+" - "+edit3);
-                lista.add(edit3+" - "+edit4);
-                lista.add(edit4+" - "+edit5);
-                lista.add(edit5+" - "+edit6);
-                lista.add(edit6+" - "+edit7);
-                lista.add(edit7+" - ESCOM");
+                lista.add("Casa - " + edit1);
+                lista.add(edit1 + " - " + edit2);
+                lista.add(edit2 + " - " + edit3);
+                lista.add(edit3 + " - " + edit4);
+                lista.add(edit4 + " - " + edit5);
+                lista.add(edit5 + " - " + edit6);
+                lista.add(edit6 + " - " + edit7);
+                lista.add(edit7 + " - ESCOM");
                 adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, lista);
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinnDireccion.setAdapter(adapter);
-                destino1 = new MarkerOptions().position(new LatLng(lat1,lng1)).title(edit1);//Se define el lugar del marcador
-                destino2 = new MarkerOptions().position(new LatLng(lat2,lng2)).title(edit2);//Se define el lugar del marcador
-                destino3 = new MarkerOptions().position(new LatLng(lat3,lng3)).title(edit3);//Se define el lugar del marcador
-                destino4 = new MarkerOptions().position(new LatLng(lat4,lng4)).title(edit4);//Se define el lugar del marcador
-                destino5 = new MarkerOptions().position(new LatLng(lat5,lng5)).title(edit5);//Se define el lugar del marcador
-                destino6 = new MarkerOptions().position(new LatLng(lat6,lng6)).title(edit6);//Se define el lugar del marcador
-                destino7 = new MarkerOptions().position(new LatLng(lat7,lng7)).title(edit7);//Se define el lugar del marcador
+                destino1 = new MarkerOptions().position(new LatLng(lat1, lng1)).title(edit1);//Se define el lugar del marcador
+                destino2 = new MarkerOptions().position(new LatLng(lat2, lng2)).title(edit2);//Se define el lugar del marcador
+                destino3 = new MarkerOptions().position(new LatLng(lat3, lng3)).title(edit3);//Se define el lugar del marcador
+                destino4 = new MarkerOptions().position(new LatLng(lat4, lng4)).title(edit4);//Se define el lugar del marcador
+                destino5 = new MarkerOptions().position(new LatLng(lat5, lng5)).title(edit5);//Se define el lugar del marcador
+                destino6 = new MarkerOptions().position(new LatLng(lat6, lng6)).title(edit6);//Se define el lugar del marcador
+                destino7 = new MarkerOptions().position(new LatLng(lat7, lng7)).title(edit7);//Se define el lugar del marcador
 
                 btn_route.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(spinnDireccion.getSelectedItem().toString().equals("Casa - "+edit1)) {
-                            trazarRuta(lugarOrigen,destino1);
+                        if (spinnDireccion.getSelectedItem().toString().equals("Casa - " + edit1)) {
+                            trazarRuta(lugarOrigen, destino1);
                             txt_price.setText(getString(R.string.price) + precio1);
                             txt_type.setText(getString(R.string.type) + " " + tipo1);
-                        }else if (spinnDireccion.getSelectedItem().toString().equals(edit1+" - "+edit2)) {
+                        } else if (spinnDireccion.getSelectedItem().toString().equals(edit1 + " - " + edit2)) {
                             trazarRuta(destino1, destino2);
                             txt_price.setText(getString(R.string.price) + precio2);
                             txt_type.setText(getString(R.string.type) + " " + tipo2);
-                        }else if (spinnDireccion.getSelectedItem().toString().equals(edit2+" - "+edit3)){
-                            trazarRuta(destino2,destino3);
+                        } else if (spinnDireccion.getSelectedItem().toString().equals(edit2 + " - " + edit3)) {
+                            trazarRuta(destino2, destino3);
                             txt_price.setText(getString(R.string.price) + precio3);
                             txt_type.setText(getString(R.string.type) + " " + tipo3);
-                        }else if (spinnDireccion.getSelectedItem().toString().equals(edit3+" - "+edit4)) {
+                        } else if (spinnDireccion.getSelectedItem().toString().equals(edit3 + " - " + edit4)) {
                             trazarRuta(destino3, destino4);
                             txt_price.setText(getString(R.string.price) + precio4);
                             txt_type.setText(getString(R.string.type) + " " + tipo4);
-                        }else if (spinnDireccion.getSelectedItem().toString().equals(edit4+" - "+edit5)){
-                            trazarRuta(destino4,destino5);
+                        } else if (spinnDireccion.getSelectedItem().toString().equals(edit4 + " - " + edit5)) {
+                            trazarRuta(destino4, destino5);
                             txt_price.setText(getString(R.string.price) + precio5);
                             txt_type.setText(getString(R.string.type) + " " + tipo5);
-                        }else if (spinnDireccion.getSelectedItem().toString().equals(edit5+" - "+edit6)){
-                            trazarRuta(destino5,destino6);
+                        } else if (spinnDireccion.getSelectedItem().toString().equals(edit5 + " - " + edit6)) {
+                            trazarRuta(destino5, destino6);
                             txt_price.setText(getString(R.string.price) + precio6);
                             txt_type.setText(getString(R.string.type) + " " + tipo6);
-                        }else if (spinnDireccion.getSelectedItem().toString().equals(edit6+" - "+edit7)){
-                            trazarRuta(destino6,destino7);
+                        } else if (spinnDireccion.getSelectedItem().toString().equals(edit6 + " - " + edit7)) {
+                            trazarRuta(destino6, destino7);
                             txt_price.setText(getString(R.string.price) + precio7);
                             txt_type.setText(getString(R.string.type) + " " + tipo7);
-                        }else if (spinnDireccion.getSelectedItem().toString().equals(edit7+" - ESCOM")) {
+                        } else if (spinnDireccion.getSelectedItem().toString().equals(edit7 + " - ESCOM")) {
                             trazarRuta(destino7, escom);
                             txt_price.setText(getString(R.string.price) + precio8);
                             txt_type.setText(getString(R.string.type) + " " + tipo8);
@@ -439,18 +439,18 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback,TaskLoa
         btn_main.setOnClickListener(new View.OnClickListener() {//Regresa a la pantalla principal
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
         });
 
-        btn_pdf.setOnClickListener(new View.OnClickListener() {
+        /*btn_pdf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),PDF.class);
                 startActivity(intent);
             }
-        });
+        });*/
     }
 
     @Override
@@ -463,8 +463,8 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback,TaskLoa
         mMap.addMarker(lugarOrigen);//Pone el marcador en la casa
         mMap.addMarker(escom);//Pone el marcador en ESCOM
 
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(puntoMedio(lugarOrigen.getPosition(),escom.getPosition())
-                ,13),3000,null);//Hace zoom en las coordenadas dadas.
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(puntoMedio(lugarOrigen.getPosition(), escom.getPosition())
+                , 13), 3000, null);//Hace zoom en las coordenadas dadas.
 
     }
 
@@ -491,26 +491,36 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback,TaskLoa
         currentPolyline = mMap.addPolyline((PolylineOptions) values[0]);
     }
 
-    public LatLng puntoMedio (LatLng origen,LatLng destino){//Obtiene la distancia media entre los puntos para poder enfocar la cámara entre los dos
+    public LatLng puntoMedio(LatLng origen, LatLng destino) {//Obtiene la distancia media entre los puntos para poder enfocar la cámara entre los dos
 
         double lat = (origen.latitude + destino.latitude) / 2;
 
-        double lng = (origen.longitude + destino.longitude) /2;
+        double lng = (origen.longitude + destino.longitude) / 2;
 
-        LatLng resultado = new LatLng(lat,lng);
+        LatLng resultado = new LatLng(lat, lng);
 
-        return  resultado;
+        return resultado;
     }
 
-    public void trazarRuta(MarkerOptions lugarPrimero, MarkerOptions lugarDestino){
+    public void trazarRuta(MarkerOptions lugarPrimero, MarkerOptions lugarDestino) {
         new FetchURL(Mapa.this).execute(getUrl(lugarPrimero.getPosition(), lugarDestino.getPosition(), "driving"), "driving");//Une los datos y los manda en un Json
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(puntoMedio(lugarPrimero.getPosition(), lugarDestino.getPosition()), 13), 1000, null);//Enfoca la cámara  13-distancia  1000-velocidad
         lugarDestino.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
         mMap.addMarker(lugarDestino);//Pone el marcador en el destino
     }
 
-    private void requestLocation(){
-        LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+    private void requestLocation() {
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, mListener);
     }
 
@@ -536,4 +546,7 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback,TaskLoa
 
         }
     };
+
+    // CHECAR https://stackoverflow.com/questions/32290045/error-invoke-virtual-method-double-android-location-location-getlatitude-on
+    // ME SALIÓ ESE ERROR PARA USAR EL MAPA Y AL PARECER AHÍ ESTÁ LA SOLUCIÓN
 }
