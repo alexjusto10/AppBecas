@@ -28,7 +28,6 @@
     <string name="conv_info2">Si quieres ver todas las becas disponibles favor de activar el interruptor de la derecha.</string>
 
     <!--GIBRAN-->
-    <string name="app_name">AppBecas</string>
     <string name="txt_registrationnumber">No. Boleta: </string>
     <string name="txt_password">Contraseña: </string>
     <string name="txt_email">E-mail: </string>
