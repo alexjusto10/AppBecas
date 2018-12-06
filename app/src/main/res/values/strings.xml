@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">AppBecas</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_conv">Convocatorias</string>
     <string name="btn_send">Enviar</string>
     <string name="transport">Seleccione cuántos medios de transporte utiliza para llegar a la escuela.</string>
     <string name="warning">Para hacer tu ruta de transporte debes estar en tu domicilio de residencia</string>
@@ -8,6 +9,37 @@
     <string name="pdf">Crear PDF</string>
     <string name="show">Mostrar</string>
     <string name="main_menu">Página principal</string>
+    <string name="transport_price">Indique qué transporte utiliza, que precio tiene y las direcciones de subida y de bjada del mismo.</string>
+    <string name="vehicles1">De tu hogar a:</string>
+    <string name="vehicles2">De la dirección anterior a:</string>
+    <string name="vehicles3">De la dirección anterior a ESCOM</string>
+    <string name="vehicles4">De tu hogar a ESCOM</string>
+    <string name="address">Intoduce tu dirección</string>
+    <string name="address_title">Dirección</string>
+    <string name="price_title">Costo</string>
+    <string name="type_title">Tipo</string>
+    <string name="hint_address">Dirección de destino</string>
+    <string name="hint_price">1.5</string>
+    <string name="hint_change">ESCOM</string>
+    <string name="price">Precio: $</string>
+    <string name="type">Transporte: </string>
+    <string name="conv_info1">A continuación se muestran las convocatorias disponibles.\n\n
+        Las convocatorias se seleccionan con base en tu promedio, materias adeudadas y semestre en curso.</string>
+    <string name="conv_info2">Si quieres ver todas las becas disponibles favor de activar el interruptor de la derecha.</string>
+
+    <!--GIBRAN-->
+    <string name="txt_registrationnumber">No. Boleta: </string>
+    <string name="txt_password">Contraseña: </string>
+    <string name="txt_email">E-mail: </string>
+    <string name="btn_login">ENTRAR</string>
+    <string name="btn_register">REGÍSTRATE</string>
+    <string name="btn_accept">ACEPTAR</string>
+    <string name="btn_cancel">CANCELAR</string>
+    <string name="chk_remember">Recordar</string>
+    <string name="hint_registrationnumber">Escribe tu boleta aquí</string>
+    <string name="hint_password">Escribe tu contraseña aquí</string>
+    <string name="hint_email">Correo electrónico</string>
+    <!--GIBRAN-->
 
     <string-array name="transport_quantity">
         <item>1</item>
@@ -21,6 +53,20 @@
     </string-array>
 
     <string-array name="route">
-        <item>Casa - ESCOM</item>
+
     </string-array>
+
+    <string-array name="vehicles">
+        <item>Camión</item>
+        <item>Automóvil particular</item>
+        <item>Combie/Microbús</item>
+        <item>Taxi</item>
+        <item>Metro</item>
+        <item>Metrobús</item>
+        <item>Mexibús</item>
+        <item>Tren subúrbano</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
