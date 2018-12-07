@@ -26,8 +26,8 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        btnEntrar = (Button)findViewById(R.id.btnEntrar);
-        btnRegistrar = (Button)findViewById(R.id.btnRegistrar);
+        btnEntrar = findViewById(R.id.btnEntrar);
+        btnRegistrar = findViewById(R.id.btnRegistrar);
         remember = findViewById(R.id.chkRecordar);
         txtBoleta = findViewById(R.id.txtBoleta);
         txtPassword = findViewById(R.id.txtPassword);
@@ -70,10 +70,10 @@ public class Login extends AppCompatActivity {
                     c.moveToFirst();
 
                     int filas = c.getCount();
-                    String nombre_usuario = "";
+                    String boleta = "";
 
                     if (filas > 0){ // SI EL USUARIO ES VALIDO
-                        nombre_usuario = c.getString(1); // OBTIENE EL NOMBRE DEL USUARIO
+                        boleta = c.getString(0); // OBTIENE EL NOMBRE DEL USUARIO
                     }
                     c.close();
                     System.out.println("FILAS: " + filas);
@@ -96,10 +96,10 @@ public class Login extends AppCompatActivity {
 
                         Toast.makeText(Login.this, "LOGIN EXITOSO", Toast.LENGTH_SHORT).show();
 
-                        /*Intent intent = new Intent(Login.this, Lobby.class);
-                        intent.putExtra("usuario", nombre_usuario);
+                        Intent intent = new Intent(Login.this, Lobby.class);
+                        intent.putExtra("boleta", boleta);
                         startActivity(intent);
-                        finish();*/
+                        finish();
                     } else {
                         Toast.makeText(Login.this, "ERROR. Datos Incorrectos", Toast.LENGTH_SHORT).show();
                     }
