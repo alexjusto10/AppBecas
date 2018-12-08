@@ -90,6 +90,7 @@ public class Registro extends Activity {
                     if(!validarEmail(txtEmail.getText().toString())) {    // VERIFICANDO QUE SEA UN EMAIL
                         Toast.makeText(Registro.this,"Coloca una dirección de correo válida", Toast.LENGTH_SHORT).show();
                     } else {
+
                         // VERIFICANDO QUE EXISTA ESA BOLETA
                         // HACIENDO CONSULTA A LA BD
                         String SQL = "SELECT * FROM Alumno WHERE boleta = '" + txtBoleta.getText().toString() + "'";
@@ -100,35 +101,45 @@ public class Registro extends Activity {
                         c.close();
                         System.out.println("FILAS: " + filas);
 
-                        if(filas == 0) { // SI LA BOLETA NO EXISTE
+                        if(filas == 0) {        // SI LA BOLETA NO EXISTE
                             Toast.makeText(Registro.this,"La boleta no existe", Toast.LENGTH_SHORT).show();
-                        } else { // LA BOLETA EXISTE, SE ENVIA CORREO Y SE ACTUALIZAN SUS DATOS
+                        } else {                // LA BOLETA EXISTE
 
-                            String actualizaAlumno = "UPDATE Alumno SET email = '" + txtEmail.getText().toString()
-                                    + "' WHERE boleta ='" + txtBoleta.getText().toString() + "'";
-                            db.execSQL(actualizaAlumno);
+                            if (FirstTime(txtBoleta.getText().toString())) { // SI NO SE HA REGISTRADO, SE ENVIA CORREO Y SE ACTUALIZAN SUS DATOS
 
-                            // GENERANDO CONTRASEÑA
-                            Random generador = new Random();
-                            int numero = 0;
-                            String passwd = "";
+                                String actualizaAlumno = "UPDATE Alumno SET email = '" + txtEmail.getText().toString()
+                                        + "' WHERE boleta ='" + txtBoleta.getText().toString() + "'";
+                                db.execSQL(actualizaAlumno);
 
-                            for (int i = 0; i < 8; i++) {
-                                numero = Math.abs(generador.nextInt() % 9);
-                                System.out.println("NUMERO GENERADO: " + numero);
-                                passwd += String.valueOf(numero);
+                                // GENERANDO CONTRASEÑA
+                                Random generador = new Random();
+                                int numero = 0;
+                                String passwd = "";
+
+                                for (int i = 0; i < 8; i++) {
+                                    numero = Math.abs(generador.nextInt() % 9);
+                                    System.out.println("NUMERO GENERADO: " + numero);
+                                    passwd += String.valueOf(numero);
+                                }
+                                System.out.println("PASSWD GENERADO: " + passwd);
+
+                                // ACTUALIZANDO PASSWORD EN LA BD
+                                actualizaAlumno = "UPDATE Alumno SET password = '" + passwd
+                                        + "' WHERE boleta = '" + txtBoleta.getText().toString() + "'";
+                                db.execSQL(actualizaAlumno);
+
+                                // ACTUALIZANDO FIRST TIME
+                                actualizaAlumno = "UPDATE Alumno SET first_time = 1 WHERE boleta = '" +
+                                        txtBoleta.getText().toString() + "'";
+                                db.execSQL(actualizaAlumno);
+
+                                // ENVIANDO CORREO CON PASSWD GENERADO
+                                EnviaCorreo(txtEmail.getText().toString(), passwd);
+
+                                db.close();
+                            } else {
+                                Toast.makeText(Registro.this,"Error, esta boleta ya ha sido registrada", Toast.LENGTH_LONG);
                             }
-                            System.out.println("PASSWD GENERADO: " + passwd);
-
-                            // ACTUALIZANDO PASSWORD EN LA BD
-                            actualizaAlumno = "UPDATE Alumno SET password = '" + passwd
-                                    + "' WHERE boleta = '" + txtBoleta.getText().toString() + "'";
-                            db.execSQL(actualizaAlumno);
-
-                            // ENVIANDO CORREO CON PASSWD
-                            EnviaCorreo(txtEmail.getText().toString(), passwd);
-
-                            db.close();
                         }
                     }
                 }
@@ -139,11 +150,32 @@ public class Registro extends Activity {
         btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Registro.this, Login.class);
                 setResult(RESULT_CANCELED);
                 finish();
             }
         });
+    }
+
+    private Boolean FirstTime(String user){
+        BaseDeDatos helper = new BaseDeDatos(this);
+        final SQLiteDatabase db = helper.getWritableDatabase();
+        int result = 0;
+
+        String SQL = "SELECT first_time FROM Alumno WHERE boleta = '" + user + "'";
+        Cursor c = db.rawQuery(SQL, null);
+        if (c != null) {
+            c.moveToFirst();
+            result = c.getInt(c.getColumnIndex("first_time"));
+            System.out.println("First Time: " + result);
+        }
+
+        c.close();
+
+        if (result == 0) {      // SI ES PRIMERA VEZ
+            return true;
+        } else {                // SI YA SE HA REGISTRADO
+            return false;
+        }
     }
 
     private void EnviaCorreo(String mail, String passwd) {

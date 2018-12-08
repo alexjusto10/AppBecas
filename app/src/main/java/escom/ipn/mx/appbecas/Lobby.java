@@ -17,17 +17,22 @@ public class Lobby extends AppCompatActivity implements fragmentConvocatorias.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lobby);
 
-        fragmentDatosPersonales fragment = new fragmentDatosPersonales();
-
         Intent i = getIntent();
         String boleta = i.getStringExtra("boleta");
-        Log.i("TAG2", boleta);
+
+        // FRAGMENT DATOS PERSONALES
+        fragmentDatosPersonales fragDP = new fragmentDatosPersonales();
+        FragmentManager fr = getFragmentManager();
 
         Bundle bundle = new Bundle();
-        bundle.putString("boleta",boleta);
-        fragment.setArguments(bundle);
+        bundle.putString("boleta", boleta);
+        fragDP.setArguments(bundle);
 
-        LobbyProcess();
+        fr.beginTransaction().replace(R.id.fragDP, fragDP).commit(); // REEMPLAZA EL CONTENEDOR FRAMELAYOUT POR EL FRAGMENT
+
+        // FRAGMENT CONVOCATORIAS
+        fragmentConvocatorias fragC = new fragmentConvocatorias();
+        fr.beginTransaction().replace(R.id.fragConvocatorias, fragC).commit();
     }
 
     @Override

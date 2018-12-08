@@ -1,5 +1,6 @@
 package escom.ipn.mx.appbecas;
 
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -48,13 +49,23 @@ public class Login extends AppCompatActivity {
     }
 
     public void LoginProcess(){
-        BaseDeDatos helper = new BaseDeDatos(this);
-        final SQLiteDatabase db = helper.getWritableDatabase();
+
+        // VERIFICANDO SI YA SE HA LOGGEADO Y SI MARCÓ EL CHECKBOX 'RECORDAR' PARA SALTARSE EL LOGIN
 
         SharedPreferences prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+        String prefsUser = prefs.getString("usuario", "");
 
+        if (!prefsUser.equals("")) {
+            Intent intent = new Intent(Login.this, Lobby.class);
+            intent.putExtra("boleta", prefsUser);
+            startActivity(intent);
+            finish();
+        }
         txtBoleta.setText(prefs.getString("usuario", ""));
         txtPassword.setText(prefs.getString("password", ""));
+
+        BaseDeDatos helper = new BaseDeDatos(this);
+        final SQLiteDatabase db = helper.getWritableDatabase();
 
         btnEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,8 +80,8 @@ public class Login extends AppCompatActivity {
                     Cursor c = db.rawQuery(SQL, null);
                     c.moveToFirst();
 
-                    int filas = c.getCount();
-                    String boleta = "";
+                    int filas = c.getCount();   // CONTADOR DE FILAS RESULTANTES DE LA CONSULTA A LA BD
+                    String boleta = "";         // CREANDO VARIABLE BOLETA
 
                     if (filas > 0){ // SI EL USUARIO ES VALIDO
                         boleta = c.getString(0); // OBTIENE EL NOMBRE DEL USUARIO
@@ -78,6 +89,7 @@ public class Login extends AppCompatActivity {
                     c.close();
                     System.out.println("FILAS: " + filas);
 
+                    // SHARED PREFERENCES
                     SharedPreferences prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
 
                     // SI EL USUARIO ES VALIDO, ENTRA
@@ -93,8 +105,6 @@ public class Login extends AppCompatActivity {
                             editor.putString("password", "");
                             editor.commit();
                         }
-
-                        Toast.makeText(Login.this, "LOGIN EXITOSO", Toast.LENGTH_SHORT).show();
 
                         Intent intent = new Intent(Login.this, Lobby.class);
                         intent.putExtra("boleta", boleta);

@@ -20,7 +20,7 @@ public class BaseDeDatos extends SQLiteOpenHelper { //HELPER PARA LA BD
 
         String SQL_ALUMNO = "CREATE TABLE Alumno (boleta TEXT NOT NULL PRIMARY KEY, nombre TEXT NOT NULL, " +
                 "paterno TEXT NOT NULL, materno TEXT NOT NULL, promedio FLOAT NOT NULL, adeudos INTEGER NOT NULL, " +
-                "email TEXT DEFAULT 'a@a.a', password TEXT DEFAULT '00000000', idBeca INTEGER DEFAULT 0, " +
+                "email TEXT DEFAULT 'a@a.a', password TEXT DEFAULT '00000000', first_time INT DEFAULT 0, idBeca INTEGER DEFAULT 0, " +
                 "FOREIGN KEY(idBeca) REFERENCES Beca(idBeca))";
         db.execSQL(SQL_ALUMNO);      // EJECUTANDO SENTENCIA SQL TABLA ALUMNO
 
