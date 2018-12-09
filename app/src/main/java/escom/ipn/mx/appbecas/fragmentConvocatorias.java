@@ -48,7 +48,7 @@ public class fragmentConvocatorias extends Fragment {
             c.moveToFirst();
             do {
                 String name = c.getString(c.getColumnIndex("nombre"));
-                becas += "\t\t\t\t\t- " + name + "\n";
+                becas += "- " + name + "\n";
                 System.out.println("BECAS: " + name);
             } while (c.moveToNext());
         }

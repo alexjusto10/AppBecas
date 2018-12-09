@@ -119,7 +119,8 @@ public class Menu_Lobby extends AppCompatActivity
         } else if (id == R.id.nav_user) {
 
         } else if (id == R.id.nav_contest) {
-
+            Intent i = new Intent (Menu_Lobby.this, Convocatorias.class);
+            startActivity(i);
         } else if (id == R.id.nav_route) {
             Intent i = new Intent (Menu_Lobby.this, MainActivity.class);
             startActivity(i);

@@ -50,17 +50,6 @@ public class Login extends AppCompatActivity {
 
     public void LoginProcess(){
 
-        // VERIFICANDO SI YA SE HA LOGGEADO Y SI MARCÓ EL CHECKBOX 'RECORDAR' PARA SALTARSE EL LOGIN
-        SharedPreferences prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
-        String prefsUser = prefs.getString("usuario", "");
-
-        if (!prefsUser.equals("")) {
-            Intent intent = new Intent(Login.this, Menu_Lobby.class);
-            intent.putExtra("boleta", prefsUser);
-            startActivity(intent);
-            finish();
-        }
-
         BaseDeDatos helper = new BaseDeDatos(this);
         final SQLiteDatabase db = helper.getWritableDatabase();
 

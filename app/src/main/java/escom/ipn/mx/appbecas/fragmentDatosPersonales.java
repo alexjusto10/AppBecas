@@ -51,17 +51,17 @@ public class fragmentDatosPersonales extends Fragment {
         if (c != null) {
             c.moveToFirst();
             String name = c.getString(c.getColumnIndex("nombre"));
-            becas += "\t\t\t\t-Nombre: " + name;
+            becas += "- Nombre: " + name;
             String pat = c.getString(c.getColumnIndex("paterno"));
             becas += " "+pat;
             String mat = c.getString(c.getColumnIndex("materno"));
             becas += " "+mat+"\n";
             String prom = c.getString(c.getColumnIndex("promedio"));
-            becas += "\t\t\t\t- Promedio: " + prom+"\n";
+            becas += "- Promedio: " + prom+"\n";
             String adeudos = c.getString(c.getColumnIndex("adeudos"));
-            becas += "\t\t\t\t- Adeudos: " + adeudos+"\n";
+            becas += "- Adeudos: " + adeudos+"\n";
             String mail = c.getString(c.getColumnIndex("email"));
-            becas += "\t\t\t\t- Correo: " + mail+"\n";
+            becas += "- Correo: " + mail+"\n";
         }
 
         txtData.setText(becas);

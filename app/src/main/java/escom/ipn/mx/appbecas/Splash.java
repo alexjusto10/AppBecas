@@ -1,7 +1,9 @@
 package escom.ipn.mx.appbecas;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,9 +22,20 @@ public class Splash extends Activity {
 
         new Handler().postDelayed(new Runnable(){
             public void run(){
-                Intent intent = new Intent(Splash.this, Login.class);
-                startActivity(intent);
-                finish();
+                // VERIFICANDO SI YA SE HA LOGGEADO Y SI MARCÓ EL CHECKBOX 'RECORDAR' PARA SALTARSE EL LOGIN
+                SharedPreferences prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+                String prefsUser = prefs.getString("usuario", "");
+
+                if (!prefsUser.equals("")) {
+                    Intent intent = new Intent(Splash.this, Menu_Lobby.class);
+                    intent.putExtra("boleta", prefsUser);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Intent intent = new Intent(Splash.this, Login.class);
+                    startActivity(intent);
+                    finish();
+                }
             };
         }, DURACION_SPLASH);
     }
