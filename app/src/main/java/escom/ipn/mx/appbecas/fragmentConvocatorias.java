@@ -53,6 +53,9 @@ public class fragmentConvocatorias extends Fragment {
             } while (c.moveToNext());
         }
 
+        c.close();
+        db.close();
+
         txtBeca.setText(becas);
 
         return view;

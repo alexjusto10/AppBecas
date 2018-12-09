@@ -51,18 +51,15 @@ public class Login extends AppCompatActivity {
     public void LoginProcess(){
 
         // VERIFICANDO SI YA SE HA LOGGEADO Y SI MARCÓ EL CHECKBOX 'RECORDAR' PARA SALTARSE EL LOGIN
-
         SharedPreferences prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
         String prefsUser = prefs.getString("usuario", "");
 
         if (!prefsUser.equals("")) {
-            Intent intent = new Intent(Login.this, Lobby.class);
+            Intent intent = new Intent(Login.this, Menu_Lobby.class);
             intent.putExtra("boleta", prefsUser);
             startActivity(intent);
             finish();
         }
-        txtBoleta.setText(prefs.getString("usuario", ""));
-        txtPassword.setText(prefs.getString("password", ""));
 
         BaseDeDatos helper = new BaseDeDatos(this);
         final SQLiteDatabase db = helper.getWritableDatabase();
@@ -83,7 +80,7 @@ public class Login extends AppCompatActivity {
                     int filas = c.getCount();   // CONTADOR DE FILAS RESULTANTES DE LA CONSULTA A LA BD
                     String boleta = "";         // CREANDO VARIABLE BOLETA
 
-                    if (filas > 0){ // SI EL USUARIO ES VALIDO
+                    if (filas > 0){             // SI EL USUARIO ES VALIDO
                         boleta = c.getString(0); // OBTIENE EL NOMBRE DEL USUARIO
                     }
                     c.close();
@@ -94,7 +91,7 @@ public class Login extends AppCompatActivity {
 
                     // SI EL USUARIO ES VALIDO, ENTRA
                     if (filas > 0) {
-                        if (remember.isChecked()) {     // SI RECORDAR ESTA ACTIVO
+                        if (remember.isChecked()) {     // SI RECORDAR ESTÁ ACTIVO
                             SharedPreferences.Editor editor = prefs.edit();
                             editor.putString("usuario", txtBoleta.getText().toString());
                             editor.putString("password", txtPassword.getText().toString());
@@ -106,7 +103,7 @@ public class Login extends AppCompatActivity {
                             editor.commit();
                         }
 
-                        Intent intent = new Intent(Login.this, Lobby.class);
+                        Intent intent = new Intent(Login.this, Menu_Lobby.class);
                         intent.putExtra("boleta", boleta);
                         startActivity(intent);
                         finish();
@@ -121,7 +118,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {      // REGISTRARSE
                 Intent intent = new Intent(Login.this, Registro.class);
-                startActivityForResult(intent, REG);     // REG es un identificador para obtener una respuesta de la otra clase
+                startActivityForResult(intent, REG);  // REG ES UN IDENTIFICADOR PARA OBTENER UNA RESPUESTA DE LA OTRA CLASE
             }
         });
     }
@@ -129,7 +126,7 @@ public class Login extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent i){
         if(requestCode == REG){
-            if(resultCode == RESULT_OK) { // Everything's OK
+            if(resultCode == RESULT_OK) {               // EVERYTHING'S OK
                 Toast.makeText(this,"Te has registrado correctamente!", Toast.LENGTH_LONG).show();
             } else if (resultCode == RESULT_CANCELED) {
                 Toast.makeText(this,"Registro cancelado", Toast.LENGTH_LONG).show();

@@ -8,7 +8,7 @@
 
 
     <TextView
-        android:id="@+id/lbEmail"
+        android:id="@+id/lbEmailMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -76,7 +76,7 @@
         android:ems="10"
         android:hint="@string/hint_email"
         android:inputType="textEmailAddress"
-        android:labelFor="@id/lbEmail"
+        android:labelFor="@id/lbEmailMenu"
         app:layout_constraintEnd_toEndOf="@+id/txtBoleta"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/txtBoleta"

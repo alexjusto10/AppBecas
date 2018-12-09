@@ -66,6 +66,9 @@ public class fragmentDatosPersonales extends Fragment {
 
         txtData.setText(becas);
 
+        c.close();
+        db.close();
+
         return view;
     }
 
