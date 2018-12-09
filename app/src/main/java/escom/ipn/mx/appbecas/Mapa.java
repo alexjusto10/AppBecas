@@ -548,6 +548,7 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback, TaskLo
         }
     };
 
+    // LÍNEA 67 DE ESTE ARCHIVO
+    // ME SALIÓ ESE ERROR PARA USAR EL MAPA Y AL PARECER AQUÍ ESTÁ LA SOLUCIÓN
     // CHECAR https://stackoverflow.com/questions/32290045/error-invoke-virtual-method-double-android-location-location-getlatitude-on
-    // ME SALIÓ ESE ERROR PARA USAR EL MAPA Y AL PARECER AHÍ ESTÁ LA SOLUCIÓN
 }
