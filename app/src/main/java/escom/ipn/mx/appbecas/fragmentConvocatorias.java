@@ -48,11 +48,10 @@ public class fragmentConvocatorias extends Fragment {
             c.moveToFirst();
             do {
                 String name = c.getString(c.getColumnIndex("nombre"));
-                becas += "- " + name + "\n";
+                becas += "- " + name + "\n\n";
                 System.out.println("BECAS: " + name);
             } while (c.moveToNext());
         }
-
         c.close();
         db.close();
 
@@ -68,7 +67,7 @@ public class fragmentConvocatorias extends Fragment {
         }
     }
 
-    @Override
+    /*@Override
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
@@ -77,7 +76,7 @@ public class fragmentConvocatorias extends Fragment {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         }
-    }
+    }*/
 
     @Override
     public void onDetach() {

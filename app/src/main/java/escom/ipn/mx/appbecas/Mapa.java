@@ -59,8 +59,8 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback, TaskLo
                     Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_REQUEST);
         }
 
-        requestLocation();
         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,mListener);
         Criteria criteria = new Criteria();
         String bestProvider = lm.getBestProvider(criteria, false);
         Location location = lm.getLastKnownLocation(bestProvider);//Obtiene las coordenadas actuales
@@ -508,21 +508,6 @@ public class Mapa extends FragmentActivity implements OnMapReadyCallback, TaskLo
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(puntoMedio(lugarPrimero.getPosition(), lugarDestino.getPosition()), 13), 1000, null);//Enfoca la cámara  13-distancia  1000-velocidad
         lugarDestino.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
         mMap.addMarker(lugarDestino);//Pone el marcador en el destino
-    }
-
-    private void requestLocation() {
-        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, mListener);
     }
 
     private LocationListener mListener = new LocationListener() {

@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class fragmentDatosPersonales extends Fragment {
+public class fragmentDatosPersonales extends Fragment{
     private fragmentConvocatorias.OnFragmentInteractionListener mListener;
     TextView txtData;
     String boleta="",becas="";
@@ -55,15 +55,14 @@ public class fragmentDatosPersonales extends Fragment {
             String pat = c.getString(c.getColumnIndex("paterno"));
             becas += " "+pat;
             String mat = c.getString(c.getColumnIndex("materno"));
-            becas += " "+mat+"\n";
+            becas += " "+mat+"\n\n";
             String prom = c.getString(c.getColumnIndex("promedio"));
-            becas += "- Promedio: " + prom+"\n";
+            becas += "- Promedio: " + prom+"\n\n";
             String adeudos = c.getString(c.getColumnIndex("adeudos"));
-            becas += "- Adeudos: " + adeudos+"\n";
+            becas += "- Adeudos: " + adeudos+"\n\n";
             String mail = c.getString(c.getColumnIndex("email"));
-            becas += "- Correo: " + mail+"\n";
+            becas += "- Correo: " + mail+"\n\n";
         }
-
         txtData.setText(becas);
 
         c.close();
@@ -79,16 +78,15 @@ public class fragmentDatosPersonales extends Fragment {
         }
     }
 
-    @Override
+    /*@Override
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof fragmentConvocatorias.OnFragmentInteractionListener) {
             mListener = (fragmentConvocatorias.OnFragmentInteractionListener) context;
         } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+            throw new RuntimeException(context.toString() + " must implement OnFragmentInteractionListener");
         }
-    }
+    }*/
 
     @Override
     public void onDetach() {
@@ -97,7 +95,6 @@ public class fragmentDatosPersonales extends Fragment {
     }
 
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
 }

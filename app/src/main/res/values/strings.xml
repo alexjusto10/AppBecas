@@ -9,7 +9,7 @@
     <string name="pdf">Crear PDF</string>
     <string name="show">Mostrar</string>
     <string name="main_menu">Página principal</string>
-    <string name="transport_price">Indique qué transporte utiliza, que precio tiene y las direcciones de subida y de bjada del mismo.</string>
+    <string name="transport_price">Indique las direccion de destino, qué tipo de transporte utiliza y que precio tiene.</string>
     <string name="vehicles1">De tu hogar a:</string>
     <string name="vehicles2">De la dirección anterior a:</string>
     <string name="vehicles3">De la dirección anterior a ESCOM</string>
