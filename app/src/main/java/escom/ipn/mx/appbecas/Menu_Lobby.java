@@ -17,10 +17,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Menu_Lobby extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    TextView lbNombre, lbEmail;
     String boleta;
 
     @Override
@@ -41,17 +41,9 @@ public class Menu_Lobby extends AppCompatActivity implements NavigationView.OnNa
         // ****************************************
 
         setContentView(R.layout.activity_menu__lobby);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        /*FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -92,7 +84,8 @@ public class Menu_Lobby extends AppCompatActivity implements NavigationView.OnNa
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_info) {
+            Toast.makeText(Menu_Lobby.this, "Proyecto para la asignatura Application Development for Mobile Devices", Toast.LENGTH_LONG).show();
             return true;
         }
 
@@ -113,8 +106,6 @@ public class Menu_Lobby extends AppCompatActivity implements NavigationView.OnNa
             Bundle bundle = new Bundle();
             bundle.putString("boleta", boleta);
             fragment.setArguments(bundle);
-        } else if (id == R.id.nav_user) {
-
         } else if (id == R.id.nav_contest) {
             Intent i = new Intent (Menu_Lobby.this, Convocatorias.class);
             startActivity(i);
@@ -150,7 +141,7 @@ public class Menu_Lobby extends AppCompatActivity implements NavigationView.OnNa
         Cursor c = db.rawQuery(SQL, null);
         c.moveToFirst();
 
-        String nombre, email;
+        String nombre;
         nombre = c.getString(0);        // OBTENIENDO NOMBRE
 
         lbNombre.setText(nombre);
