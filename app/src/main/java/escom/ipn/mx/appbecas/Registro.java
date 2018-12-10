@@ -50,10 +50,10 @@ public class Registro extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
 
-        btnAceptar = (Button)findViewById(R.id.btnAceptar);
-        btnCancelar = (Button)findViewById(R.id.btnCancelar);
-        txtBoleta = (EditText)findViewById(R.id.txtBoleta);
-        txtEmail = (EditText)findViewById(R.id.txtEmail);
+        btnAceptar = findViewById(R.id.btnAceptar);
+        btnCancelar = findViewById(R.id.btnCancelar);
+        txtBoleta = findViewById(R.id.txtBoleta);
+        txtEmail = findViewById(R.id.txtEmail);
 
         context = this;
 
