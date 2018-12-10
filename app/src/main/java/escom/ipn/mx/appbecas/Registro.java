@@ -6,10 +6,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.util.Patterns;
 
 import java.util.Random;
@@ -29,6 +30,8 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+
+import static java.security.AccessController.getContext;
 
 
 public class Registro extends Activity {
@@ -107,38 +110,46 @@ public class Registro extends Activity {
 
                             if (FirstTime(txtBoleta.getText().toString())) { // SI NO SE HA REGISTRADO, SE ENVIA CORREO Y SE ACTUALIZAN SUS DATOS
 
-                                String actualizaAlumno = "UPDATE Alumno SET email = '" + txtEmail.getText().toString()
-                                        + "' WHERE boleta ='" + txtBoleta.getText().toString() + "'";
-                                db.execSQL(actualizaAlumno);
+                                ConnectivityManager conexion = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                                NetworkInfo networkInfo = conexion.getActiveNetworkInfo();
 
-                                // GENERANDO CONTRASEÑA
-                                Random generador = new Random();
-                                int numero = 0;
-                                String passwd = "";
+                                if (networkInfo != null && networkInfo.isConnected()) {
+                                    String actualizaAlumno = "UPDATE Alumno SET email = '" + txtEmail.getText().toString()
+                                            + "' WHERE boleta ='" + txtBoleta.getText().toString() + "'";
+                                    db.execSQL(actualizaAlumno);
 
-                                for (int i = 0; i < 8; i++) {
-                                    numero = Math.abs(generador.nextInt() % 9);
-                                    System.out.println("NUMERO GENERADO: " + numero);
-                                    passwd += String.valueOf(numero);
+                                    // GENERANDO CONTRASEÑA
+                                    Random generador = new Random();
+                                    int numero = 0;
+                                    String passwd = "";
+
+                                    for (int i = 0; i < 8; i++) {
+                                        numero = Math.abs(generador.nextInt() % 9);
+                                        System.out.println("NUMERO GENERADO: " + numero);
+                                        passwd += String.valueOf(numero);
+                                    }
+                                    System.out.println("PASSWD GENERADO: " + passwd);
+
+                                    // ACTUALIZANDO PASSWORD EN LA BD
+                                    actualizaAlumno = "UPDATE Alumno SET password = '" + passwd
+                                            + "' WHERE boleta = '" + txtBoleta.getText().toString() + "'";
+                                    db.execSQL(actualizaAlumno);
+
+                                    // ACTUALIZANDO FIRST TIME
+                                    actualizaAlumno = "UPDATE Alumno SET first_time = 1 WHERE boleta = '" +
+                                            txtBoleta.getText().toString() + "'";
+                                    db.execSQL(actualizaAlumno);
+
+                                    // ENVIANDO CORREO CON PASSWD GENERADO
+                                    EnviaCorreo(txtEmail.getText().toString(), passwd);
+
+                                    db.close();
+                                } else {
+                                    Toast.makeText(Registro.this, "No se pudo realizar el registro" +
+                                            ", verifica tu acceso a Internet e intenta nuevamente", Toast.LENGTH_LONG).show();
                                 }
-                                System.out.println("PASSWD GENERADO: " + passwd);
-
-                                // ACTUALIZANDO PASSWORD EN LA BD
-                                actualizaAlumno = "UPDATE Alumno SET password = '" + passwd
-                                        + "' WHERE boleta = '" + txtBoleta.getText().toString() + "'";
-                                db.execSQL(actualizaAlumno);
-
-                                // ACTUALIZANDO FIRST TIME
-                                actualizaAlumno = "UPDATE Alumno SET first_time = 1 WHERE boleta = '" +
-                                        txtBoleta.getText().toString() + "'";
-                                db.execSQL(actualizaAlumno);
-
-                                // ENVIANDO CORREO CON PASSWD GENERADO
-                                EnviaCorreo(txtEmail.getText().toString(), passwd);
-
-                                db.close();
                             } else {
-                                Toast.makeText(Registro.this,"Error, esta boleta ya ha sido registrada", Toast.LENGTH_LONG);
+                                Toast.makeText(Registro.this,"Error, esta boleta ya ha sido registrada", Toast.LENGTH_LONG).show();
                             }
                         }
                     }

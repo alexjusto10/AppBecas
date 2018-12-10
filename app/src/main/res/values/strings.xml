@@ -34,6 +34,9 @@
     <string name="txt_contest">\tConvocatorias</string>
     <string name="txt_data">\tDatos Personales</string>
     <string name="txt_beca">\tBeca</string>
+    <string name="txt_instructionRegister">A continuación, proporciona los datos solicitados. Después de dar click en el botón
+        aceptar, se te enviará un mensaje a la dirección de correo electrónico
+        con tu nueva contraseña para que puedas acceder a la app. </string>
     <string name="btn_login">ENTRAR</string>
     <string name="btn_register">REGÍSTRATE</string>
     <string name="btn_accept">ACEPTAR</string>
