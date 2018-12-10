@@ -84,6 +84,7 @@ public class fragmentConvocatorias extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(),Convocatorias.class);
+                i.putExtra("boleta",boleta);
                 startActivity(i);
             }
         });

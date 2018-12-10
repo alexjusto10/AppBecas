@@ -17,6 +17,7 @@
         android:textAppearance="@android:style/TextAppearance.Material.Title"
         android:textColor="#0aa5ba"
         android:textSize="36sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,48 +40,18 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_title_activity_conv"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Switch
-        android:id="@+id/switch_conv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:checked="false"
-        android:showText="false"
-        android:splitTrack="false"
-        app:layout_constraintBottom_toBottomOf="@+id/textView4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView4"
-        tools:checked="false" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/conv_info2"
-        android:textAppearance="@android:style/TextAppearance.Material.Body2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/switch_conv"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_conv_info1"
-        app:layout_constraintVertical_bias="0.0" />
-
     <FrameLayout
         android:id="@+id/fragment_becas"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4">
+        app:layout_constraintTop_toBottomOf="@+id/txt_conv_info1"
+        app:layout_constraintVertical_bias="0.0">
 
     </FrameLayout>
 

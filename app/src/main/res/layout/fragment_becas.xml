@@ -14,49 +14,121 @@
         tools:context=".fragment_becas">
 
         <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/conv_info2"
+            android:textAppearance="@android:style/TextAppearance.Material.Body2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/switchBecas"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Switch
+            android:id="@+id/switchBecas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:showText="false"
+            android:splitTrack="false"
+            app:layout_constraintBottom_toBottomOf="@+id/textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView"
+            tools:checked="false" />
+
+        <TextView
             android:id="@+id/txtBecas"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textView3"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lbBecas"
+            app:layout_constraintTop_toBottomOf="@+id/txtBecasTitulo"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/lbBecas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/txt_contest"
+            android:layout_marginTop="50dp"
+            android:text="@string/becas"
             android:textColor="#0aa5ba"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnBecas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
-            android:backgroundTint="@android:color/holo_blue_dark"
+            android:backgroundTint="#0aa5ba"
             android:text="@string/add"
             android:textColor="#FFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtBecas"
+            app:layout_constraintTop_toBottomOf="@+id/txtBecasError"
             app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/txtBecasTitulo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:textAlignment="center"
+            android:textColor="#0aa5ba"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toStartOf="@+id/textView3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lbBecas" />
+
+        <Button
+            android:id="@+id/btnDer"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/flecha_derecha"
+            app:layout_constraintBottom_toTopOf="@+id/btnBecas"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lbBecas" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/next"
+            android:textColor="#0aa5ba"
+            android:textSize="10sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="@+id/btnDer"
+            app:layout_constraintStart_toStartOf="@+id/btnDer"
+            app:layout_constraintTop_toBottomOf="@+id/btnDer" />
+
+        <TextView
+            android:id="@+id/txtBecasError"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/txtBecas"
+            app:layout_constraintStart_toStartOf="@+id/txtBecas"
+            app:layout_constraintTop_toBottomOf="@+id/txtBecas" />
+
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

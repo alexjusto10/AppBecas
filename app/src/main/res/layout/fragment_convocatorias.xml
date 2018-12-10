@@ -24,7 +24,6 @@
             android:text="@string/txt_contest"
             android:textColor="#0aa5ba"
             android:textSize="30sp"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"

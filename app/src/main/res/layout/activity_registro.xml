@@ -71,18 +71,19 @@
         android:id="@+id/txtBoleta"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="32dp"
         android:ems="10"
         android:hint="@string/hint_registrationnumber"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:labelFor="@id/txtBoleta"
         app:layout_constraintBottom_toBottomOf="@+id/lbUser"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/lbUser"
         app:layout_constraintTop_toTopOf="@+id/lbUser"
-        app:layout_constraintVertical_bias="0.428" />
+        app:layout_constraintVertical_bias="0.428"
+        android:maxLength="10"/>
 
     <EditText
         android:id="@+id/txtEmail"

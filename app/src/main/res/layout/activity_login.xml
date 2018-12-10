@@ -23,15 +23,16 @@
         android:id="@+id/txtBoleta"
         android:layout_width="225dp"
         android:layout_height="45dp"
-        android:layout_marginEnd="16dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="13dp"
         android:ems="10"
         android:hint="@string/hint_registrationnumber"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:labelFor="@id/lbUser"
         android:textColorLink="#0aa5ba"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        android:maxLength="10"/>
 
     <TextView
         android:id="@+id/lbPassword"
