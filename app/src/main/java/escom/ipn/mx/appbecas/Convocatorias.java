@@ -14,8 +14,8 @@ public class Convocatorias extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);   // APARECE BOTÓN DE REGRESAR EN EL TITULO DE LA ACTIVITY
 
         fragmentBecas frag = new fragmentBecas();
-        FragmentManager fr = getFragmentManager();
-        //fr.beginTransaction().replace(R.id.fragment_becas,frag).commit(); // REEMPLAZA EL CONTENEDOR FRAMELAYOUT POR EL FRAGMENT
+        android.support.v4.app.FragmentManager fr = getSupportFragmentManager();
+        fr.beginTransaction().replace(R.id.fragment_becas, frag).commit(); // REEMPLAZA EL CONTENEDOR FRAMELAYOUT POR EL FRAGMENT
     }
 
     @Override
