@@ -61,9 +61,7 @@ public class Menu_Lobby extends AppCompatActivity implements NavigationView.OnNa
 
         NavigationView navigationView = findViewById(R.id.nav_view);
 
-        setNameAndEmail(boleta, navigationView);
-
-
+        setNameInHeader(boleta, navigationView);
 
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setItemIconTintList(null);           // PARA QUE NO PINTE LOS ICONOS DEL MENU EN GRIS
@@ -140,7 +138,7 @@ public class Menu_Lobby extends AppCompatActivity implements NavigationView.OnNa
         return true;
     }
 
-    public void setNameAndEmail(String boleta, NavigationView navigationView) {
+    public void setNameInHeader(String boleta, NavigationView navigationView) {
 
         View hView = navigationView.getHeaderView(0);
         TextView lbNombre = hView.findViewById(R.id.lbNombreHeader);
