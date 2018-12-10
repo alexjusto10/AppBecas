@@ -17,7 +17,7 @@ import android.widget.Toast;
 public class fragmentDatosPersonales extends Fragment{
     private fragmentConvocatorias.OnFragmentInteractionListener mListener;
     TextView txtData;
-    String boleta="",becas="";
+    String boleta="",becas="\n";
 
     public fragmentDatosPersonales() {
         // Required empty public constructor
@@ -77,16 +77,6 @@ public class fragmentDatosPersonales extends Fragment{
             mListener.onFragmentInteraction(uri);
         }
     }
-
-    /*@Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof fragmentConvocatorias.OnFragmentInteractionListener) {
-            mListener = (fragmentConvocatorias.OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString() + " must implement OnFragmentInteractionListener");
-        }
-    }*/
 
     @Override
     public void onDetach() {

@@ -149,7 +149,7 @@ public class Registro extends Activity {
                                             ", verifica tu acceso a Internet e intenta nuevamente", Toast.LENGTH_LONG).show();
                                 }
                             } else {
-                                Toast.makeText(Registro.this,"Error, esta boleta ya ha sido registrada", Toast.LENGTH_LONG).show();
+                                Toast.makeText(Registro.this,"Esta boleta ya ha sido registrada", Toast.LENGTH_LONG).show();
                             }
                         }
                     }

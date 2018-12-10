@@ -27,24 +27,27 @@ public class BaseDeDatos extends SQLiteOpenHelper { //HELPER PARA LA BD
 
         // INSERTANDO EN TABLA BECA
         db.execSQL("INSERT INTO Beca(idBeca, nombre, monto, duracion, minPromedio) " +
-                "VALUES (1, 'Excelencia', 2000.00, 12, 8.5)");
+                "VALUES (1, 'Excelencia', 2650.00, 6, 8.5)");
 
         db.execSQL("INSERT INTO Beca(idBeca, nombre, monto, duracion, minPromedio) " +
-                "VALUES (2, 'Institucional A', 900.00, 12, 7.0)");
+                "VALUES (2, 'Institucional A', 950.00, 6, 6.0)");
 
         db.execSQL("INSERT INTO Beca(idBeca, nombre, monto, duracion, minPromedio) " +
-                "VALUES (3, 'Institucional B', 1100.00, 12, 7.0)");
+                "VALUES (3, 'Institucional B', 1100.00, 6, 8.0)");
 
         db.execSQL("INSERT INTO Beca(idBeca, nombre, monto, duracion, minPromedio) " +
-                "VALUES (4, 'Manutencion', 850.00, 12, 6.0)");
+                "VALUES (4, 'De aprobación', 500.00, 6, 6.0)");
 
 
         // INSERTANDO EN TABLA ALUMNO
         db.execSQL("INSERT INTO Alumno(boleta, nombre, paterno, materno, promedio, adeudos) " +
-                "VALUES ('2014081269', 'Luis Ernesto', 'Gutiérrez', 'Chávez', 8.92, 0)");
+                "VALUES ('2014081269', 'Gibran Armando', 'Ramos', 'Guerrero', 8.92, 0)");
 
         db.execSQL("INSERT INTO Alumno(boleta, nombre, paterno, materno, promedio, adeudos) " +
-                "VALUES ('2014090365', 'José', 'López', 'Ramírez', 8.3, 0)");
+                "VALUES ('2014090365', 'Jaime Alejandro', 'Justo', 'Vizcarra', 8.3, 0)");
+
+        db.execSQL("INSERT INTO Alumno(boleta, nombre, paterno, materno, promedio, adeudos) " +
+                "VALUES ('2017000000', 'Berenice', 'Maya', 'Calderón', 8.3, 1)");
 
         db.execSQL("INSERT INTO Alumno(boleta, nombre, paterno, materno, promedio, adeudos) " +
                 "VALUES ('2017612210', 'Miguel', 'Correa', 'Medina', 6.9, 2)");
