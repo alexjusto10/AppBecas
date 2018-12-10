@@ -24,8 +24,10 @@
     <string name="price">Precio: $</string>
     <string name="type">Transporte: </string>
     <string name="conv_info1">A continuación se muestran las convocatorias disponibles.\n\n
-        Las convocatorias se seleccionan con base en tu promedio, materias adeudadas y semestre en curso.</string>
+        Las convocatorias se seleccionan con base en tu promedio y materias adeudadas.</string>
     <string name="conv_info2">Si quieres ver todas las becas disponibles favor de activar el interruptor de la derecha.</string>
+    <string name="info">Más</string>
+    <string name="add">Agregar documentos</string>
 
     <!--GIBRAN-->
     <string name="txt_registrationnumber">No. Boleta: </string>
@@ -34,9 +36,9 @@
     <string name="txt_contest">\tConvocatorias</string>
     <string name="txt_data">\tDatos Personales</string>
     <string name="txt_beca">\tBeca</string>
-    <string name="txt_instructionRegister">A continuación, proporciona los datos solicitados. Después de dar click en el botón
-        aceptar, se te enviará un mensaje a la dirección de correo electrónico
-        con tu nueva contraseña para que puedas acceder a la app. </string>
+    <string name="txt_instructionRegister">A continuación, proporciona los datos solicitados.\n\n
+        Después de dar click en el botón aceptar, se te enviará un mensaje a la dirección de correo electrónico
+        con tu contraseña para que puedas acceder a la app. </string>
     <string name="btn_login">ENTRAR</string>
     <string name="btn_register">REGÍSTRATE</string>
     <string name="btn_accept">ACEPTAR</string>

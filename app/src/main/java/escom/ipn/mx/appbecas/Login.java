@@ -97,7 +97,7 @@ public class Login extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                     } else {
-                        Toast.makeText(Login.this, "ERROR. Datos Incorrectos", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, "Datos Incorrectos", Toast.LENGTH_SHORT).show();
                     }
                 }
             }

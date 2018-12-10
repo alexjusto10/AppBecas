@@ -49,7 +49,11 @@ public class Lobby extends Fragment {
 
         // FRAGMENT CONVOCATORIAS
         fragmentConvocatorias fragC = new fragmentConvocatorias();
-        fr.beginTransaction().replace(R.id.fragConvocatorias, fragC).commit();
+        FragmentManager fc = getFragmentManager();
+
+        fragC.setArguments(bundle);
+
+        fc.beginTransaction().replace(R.id.fragConvocatorias, fragC).commit();
 
         return view;
     }
