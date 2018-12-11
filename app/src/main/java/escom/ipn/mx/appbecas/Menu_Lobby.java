@@ -108,9 +108,7 @@ public class Menu_Lobby extends AppCompatActivity implements NavigationView.OnNa
             fragment.setArguments(bundle);
         } else if (id == R.id.nav_contest) {
             Intent i = new Intent (Menu_Lobby.this, Convocatorias.class);
-            startActivity(i);
-        } else if (id == R.id.nav_route) {
-            Intent i = new Intent (Menu_Lobby.this, MainActivity.class);
+            i.putExtra("boleta", boleta);
             startActivity(i);
         } else if (id == R.id.nav_logout) {
             SharedPreferences prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);

@@ -30,6 +30,14 @@
     <string name="add">Agregar documentos</string>
     <string name="becas">Becas disponibles</string>
     <string name="next">Siguiente</string>
+    <string name="txtDocuments">Subir documentos</string>
+    <string name="socio">Estudio socioeconómico</string>
+    <string name="upload">Subir</string>
+    <string name="cart_comp">Carta compromiso</string>
+    <string name="ingr_egr">Formato de ingresos y egresos</string>
+    <string name="dom">Comprobante de domicilio\n(No mayor a tres meses)</string>
+    <string name="ingr">Comprobante de ingresos</string>
+    <string name="actv">Actividad extracurricular</string>
 
     <!--GIBRAN-->
     <string name="txt_registrationnumber">No. Boleta: </string>
@@ -52,7 +60,7 @@
 
     <string name="title_activity_login">Inicia Sesión</string>
     <string name="title_activity_register">Registro</string>
-    <string name="title_activity_route">Traza tu Ruta</string>
+    <string name="title_activity_docs">Subir documentos</string>
     <string name="title_activity_transport">Medios de Transporte</string>
     <!--GIBRAN-->
 

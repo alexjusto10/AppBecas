@@ -21,7 +21,7 @@ public class fragmentBecas extends Fragment {
     Button btnBecas,btnDer;
     String boleta="",becas="",becasTit="",becasError="",SQLA,SQLB;
     Cursor ca,cb;
-    Integer intBeca;
+    Integer intBeca=0;
 
     public fragmentBecas() {
         // Required empty public constructor
@@ -82,8 +82,13 @@ public class fragmentBecas extends Fragment {
         btnBecas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(),MainActivity.class);
-                startActivity(i);
+                if(intBeca!=0) {
+                    Intent i = new Intent(getActivity(), MainActivity.class);
+                    i.putExtra("beca",intBeca);
+                    startActivity(i);
+                }else{
+                    Toast.makeText(getActivity(), "No cumples los requisitos para ser candidato", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -152,18 +157,23 @@ public class fragmentBecas extends Fragment {
         String descr = cb.getString(cb.getColumnIndex("descr"));
         becas += descr;
 
-        if (ca.getInt(ca.getColumnIndex("adeudos")) == 1 && cb.getInt(cb.getColumnIndex("idBeca"))!= 4)
-            becasError += "Tienes "+ ca.getInt(ca.getColumnIndex("adeudos"))+" materias adeudadas\n\n";
-        else if (ca.getInt(ca.getColumnIndex("adeudos")) > 1)
-            becasError += "Tienes "+ ca.getInt(ca.getColumnIndex("adeudos"))+" materias adeudadas\n\n";
+        if (ca.getInt(ca.getColumnIndex("adeudos")) == 1 && cb.getInt(cb.getColumnIndex("idBeca"))!= 4) {
+            becasError += "Tienes " + ca.getInt(ca.getColumnIndex("adeudos")) + " materias adeudadas\n\n";
+            intBeca = 0;
+        }else if (ca.getInt(ca.getColumnIndex("adeudos")) > 1) {
+            becasError += "Tienes " + ca.getInt(ca.getColumnIndex("adeudos")) + " materias adeudadas\n\n";
+            intBeca=0;
+        }
+        if (ca.getDouble(ca.getColumnIndex("promedio")) < cb.getDouble(cb.getColumnIndex("minPromedio"))) {
+            becasError += "Tu promedio es  " + ca.getDouble(ca.getColumnIndex("promedio")) +
+                    ", el mínimo solicitado es " + cb.getDouble(cb.getColumnIndex("minPromedio"));
+            intBeca=0;
+        }
 
-        if (ca.getDouble(ca.getColumnIndex("promedio")) < cb.getDouble(cb.getColumnIndex("minPromedio")))
-            becasError += "Tu promedio es  "+ca.getDouble(ca.getColumnIndex("promedio"))+
-                    ", el mínimo solicitado es "+cb.getDouble(cb.getColumnIndex("minPromedio"));
+        if (becasError.equals(""))
+            intBeca = cb.getInt(cb.getColumnIndex("idBeca"));
 
-        intBeca = cb.getInt(cb.getColumnIndex("idBeca"));
-
-            if(cb.moveToNext()){
+        if(cb.moveToNext()){
         }else {
             cb.moveToFirst();
         }

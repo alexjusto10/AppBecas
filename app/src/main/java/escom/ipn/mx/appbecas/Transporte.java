@@ -1,8 +1,10 @@
 package escom.ipn.mx.appbecas;
 
+import android.content.Context;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.LocationManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -18,11 +20,11 @@ import android.widget.Toast;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 
 public class Transporte extends AppCompatActivity {
+    LocationManager locationManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +85,11 @@ public class Transporte extends AppCompatActivity {
         Log.i("INTENT_MAIN","Posicion: "+posicion);
         posicion = posicion+1;
 
-        switch (posicion){
+        locationManager= (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if(locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)==false)
+            startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+
+        switch (posicion) {
             case 1:
                 txt_vehicles1.setVisibility(View.GONE);
                 txt_vehicles2.setVisibility(View.GONE);
@@ -132,12 +138,12 @@ public class Transporte extends AppCompatActivity {
                 btn_send.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(TextUtils.isEmpty(edit_price8.getText().toString())){
-                            Toast.makeText(getApplicationContext(),"Algún campo está vacío.",Toast.LENGTH_LONG).show();
-                        }else {
+                        if (TextUtils.isEmpty(edit_price8.getText().toString())) {
+                            Toast.makeText(getApplicationContext(), "Algún campo está vacío.", Toast.LENGTH_LONG).show();
+                        } else {
                             String str_spinn_type8 = spinn_type8.getSelectedItem().toString();
                             Intent intent1 = new Intent(getApplicationContext(), Mapa.class);
-                            intent1.putExtra("posicion",1);
+                            intent1.putExtra("posicion", 1);
                             intent1.putExtra("precio" + Integer.toString(1), edit_price8.getText().toString());
                             intent1.putExtra("tipo" + Integer.toString(1), str_spinn_type8);
                             startActivity(intent1);
@@ -190,18 +196,18 @@ public class Transporte extends AppCompatActivity {
                 btn_send.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(TextUtils.isEmpty(edit_address7.getText().toString())
-                                ||TextUtils.isEmpty(edit_price7.getText().toString())
-                                ||TextUtils.isEmpty(edit_price8.getText().toString()))
-                            Toast.makeText(getApplicationContext(),"Algún campo está vacío.",Toast.LENGTH_LONG).show();
+                        if (TextUtils.isEmpty(edit_address7.getText().toString())
+                                || TextUtils.isEmpty(edit_price7.getText().toString())
+                                || TextUtils.isEmpty(edit_price8.getText().toString()))
+                            Toast.makeText(getApplicationContext(), "Algún campo está vacío.", Toast.LENGTH_LONG).show();
                         else {
                             String str_spinn_type8 = spinn_type8.getSelectedItem().toString();
                             String str_spinn_type7 = spinn_type7.getSelectedItem().toString();
                             Intent intent1 = new Intent(getApplicationContext(), Mapa.class);
-                            intent1.putExtra("posicion",2);
-                            intent1.putExtra("edit"+Integer.toString(1),edit_address7.getText().toString());
-                            intent1.putExtra("lat"+Integer.toString(1),geoLocalizar(edit_address7).latitude);
-                            intent1.putExtra("lng"+Integer.toString(1),geoLocalizar(edit_address7).longitude);
+                            intent1.putExtra("posicion", 2);
+                            intent1.putExtra("edit" + Integer.toString(1), edit_address7.getText().toString());
+                            intent1.putExtra("lat" + Integer.toString(1), geoLocalizar(edit_address7).latitude);
+                            intent1.putExtra("lng" + Integer.toString(1), geoLocalizar(edit_address7).longitude);
                             intent1.putExtra("precio" + Integer.toString(1), edit_price7.getText().toString());
                             intent1.putExtra("tipo" + Integer.toString(1), str_spinn_type7);
                             intent1.putExtra("precio" + Integer.toString(2), edit_price8.getText().toString());
@@ -251,26 +257,26 @@ public class Transporte extends AppCompatActivity {
                 btn_send.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(TextUtils.isEmpty(edit_address6.getText().toString())
-                                ||TextUtils.isEmpty(edit_price6.getText().toString())
-                                ||TextUtils.isEmpty(edit_address7.getText().toString())
-                                ||TextUtils.isEmpty(edit_price7.getText().toString())
-                                ||TextUtils.isEmpty(edit_price8.getText().toString()))
-                            Toast.makeText(getApplicationContext(),"Algún campo está vacío.",Toast.LENGTH_LONG).show();
+                        if (TextUtils.isEmpty(edit_address6.getText().toString())
+                                || TextUtils.isEmpty(edit_price6.getText().toString())
+                                || TextUtils.isEmpty(edit_address7.getText().toString())
+                                || TextUtils.isEmpty(edit_price7.getText().toString())
+                                || TextUtils.isEmpty(edit_price8.getText().toString()))
+                            Toast.makeText(getApplicationContext(), "Algún campo está vacío.", Toast.LENGTH_LONG).show();
                         else {
                             String str_spinn_type8 = spinn_type8.getSelectedItem().toString();
                             String str_spinn_type7 = spinn_type7.getSelectedItem().toString();
                             String str_spinn_type6 = spinn_type6.getSelectedItem().toString();
                             Intent intent1 = new Intent(getApplicationContext(), Mapa.class);
-                            intent1.putExtra("posicion",3);
-                            intent1.putExtra("edit"+Integer.toString(1),edit_address6.getText().toString());
-                            intent1.putExtra("lat"+Integer.toString(1),geoLocalizar(edit_address6).latitude);
-                            intent1.putExtra("lng"+Integer.toString(1),geoLocalizar(edit_address6).longitude);
+                            intent1.putExtra("posicion", 3);
+                            intent1.putExtra("edit" + Integer.toString(1), edit_address6.getText().toString());
+                            intent1.putExtra("lat" + Integer.toString(1), geoLocalizar(edit_address6).latitude);
+                            intent1.putExtra("lng" + Integer.toString(1), geoLocalizar(edit_address6).longitude);
                             intent1.putExtra("precio" + Integer.toString(1), edit_price6.getText().toString());
                             intent1.putExtra("tipo" + Integer.toString(1), str_spinn_type6);
-                            intent1.putExtra("edit"+Integer.toString(2),edit_address7.getText().toString());
-                            intent1.putExtra("lat"+Integer.toString(2),geoLocalizar(edit_address7).latitude);
-                            intent1.putExtra("lng"+Integer.toString(2),geoLocalizar(edit_address7).longitude);
+                            intent1.putExtra("edit" + Integer.toString(2), edit_address7.getText().toString());
+                            intent1.putExtra("lat" + Integer.toString(2), geoLocalizar(edit_address7).latitude);
+                            intent1.putExtra("lng" + Integer.toString(2), geoLocalizar(edit_address7).longitude);
                             intent1.putExtra("precio" + Integer.toString(2), edit_price7.getText().toString());
                             intent1.putExtra("tipo" + Integer.toString(2), str_spinn_type7);
                             intent1.putExtra("precio" + Integer.toString(3), edit_price8.getText().toString());
@@ -315,34 +321,34 @@ public class Transporte extends AppCompatActivity {
                 btn_send.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(TextUtils.isEmpty(edit_address5.getText().toString())
-                                ||TextUtils.isEmpty(edit_price5.getText().toString())
-                                ||TextUtils.isEmpty(edit_address6.getText().toString())
-                                ||TextUtils.isEmpty(edit_price6.getText().toString())
-                                ||TextUtils.isEmpty(edit_address7.getText().toString())
-                                ||TextUtils.isEmpty(edit_price7.getText().toString())
-                                ||TextUtils.isEmpty(edit_price8.getText().toString()))
-                            Toast.makeText(getApplicationContext(),"Algún campo está vacío.",Toast.LENGTH_LONG).show();
+                        if (TextUtils.isEmpty(edit_address5.getText().toString())
+                                || TextUtils.isEmpty(edit_price5.getText().toString())
+                                || TextUtils.isEmpty(edit_address6.getText().toString())
+                                || TextUtils.isEmpty(edit_price6.getText().toString())
+                                || TextUtils.isEmpty(edit_address7.getText().toString())
+                                || TextUtils.isEmpty(edit_price7.getText().toString())
+                                || TextUtils.isEmpty(edit_price8.getText().toString()))
+                            Toast.makeText(getApplicationContext(), "Algún campo está vacío.", Toast.LENGTH_LONG).show();
                         else {
                             String str_spinn_type8 = spinn_type8.getSelectedItem().toString();
                             String str_spinn_type7 = spinn_type7.getSelectedItem().toString();
                             String str_spinn_type6 = spinn_type6.getSelectedItem().toString();
                             String str_spinn_type5 = spinn_type5.getSelectedItem().toString();
                             Intent intent1 = new Intent(getApplicationContext(), Mapa.class);
-                            intent1.putExtra("posicion",4);
-                            intent1.putExtra("edit"+Integer.toString(1),edit_address5.getText().toString());
-                            intent1.putExtra("lat"+Integer.toString(1),geoLocalizar(edit_address5).latitude);
-                            intent1.putExtra("lng"+Integer.toString(1),geoLocalizar(edit_address5).longitude);
+                            intent1.putExtra("posicion", 4);
+                            intent1.putExtra("edit" + Integer.toString(1), edit_address5.getText().toString());
+                            intent1.putExtra("lat" + Integer.toString(1), geoLocalizar(edit_address5).latitude);
+                            intent1.putExtra("lng" + Integer.toString(1), geoLocalizar(edit_address5).longitude);
                             intent1.putExtra("precio" + Integer.toString(1), edit_price5.getText().toString());
                             intent1.putExtra("tipo" + Integer.toString(1), str_spinn_type5);
-                            intent1.putExtra("edit"+Integer.toString(2),edit_address6.getText().toString());
-                            intent1.putExtra("lat"+Integer.toString(2),geoLocalizar(edit_address6).latitude);
-                            intent1.putExtra("lng"+Integer.toString(2),geoLocalizar(edit_address6).longitude);
+                            intent1.putExtra("edit" + Integer.toString(2), edit_address6.getText().toString());
+                            intent1.putExtra("lat" + Integer.toString(2), geoLocalizar(edit_address6).latitude);
+                            intent1.putExtra("lng" + Integer.toString(2), geoLocalizar(edit_address6).longitude);
                             intent1.putExtra("precio" + Integer.toString(2), edit_price6.getText().toString());
                             intent1.putExtra("tipo" + Integer.toString(2), str_spinn_type6);
-                            intent1.putExtra("edit"+Integer.toString(3),edit_address7.getText().toString());
-                            intent1.putExtra("lat"+Integer.toString(3),geoLocalizar(edit_address7).latitude);
-                            intent1.putExtra("lng"+Integer.toString(3),geoLocalizar(edit_address7).longitude);
+                            intent1.putExtra("edit" + Integer.toString(3), edit_address7.getText().toString());
+                            intent1.putExtra("lat" + Integer.toString(3), geoLocalizar(edit_address7).latitude);
+                            intent1.putExtra("lng" + Integer.toString(3), geoLocalizar(edit_address7).longitude);
                             intent1.putExtra("precio" + Integer.toString(3), edit_price7.getText().toString());
                             intent1.putExtra("tipo" + Integer.toString(3), str_spinn_type7);
                             intent1.putExtra("precio" + Integer.toString(4), edit_price8.getText().toString());
@@ -382,16 +388,16 @@ public class Transporte extends AppCompatActivity {
                 btn_send.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(TextUtils.isEmpty(edit_address4.getText().toString())
-                                ||TextUtils.isEmpty(edit_price4.getText().toString())
-                                ||TextUtils.isEmpty(edit_address5.getText().toString())
-                                ||TextUtils.isEmpty(edit_price5.getText().toString())
-                                ||TextUtils.isEmpty(edit_address6.getText().toString())
-                                ||TextUtils.isEmpty(edit_price6.getText().toString())
-                                ||TextUtils.isEmpty(edit_address7.getText().toString())
-                                ||TextUtils.isEmpty(edit_price7.getText().toString())
-                                ||TextUtils.isEmpty(edit_price8.getText().toString()))
-                            Toast.makeText(getApplicationContext(),"Algún campo está vacío.",Toast.LENGTH_LONG).show();
+                        if (TextUtils.isEmpty(edit_address4.getText().toString())
+                                || TextUtils.isEmpty(edit_price4.getText().toString())
+                                || TextUtils.isEmpty(edit_address5.getText().toString())
+                                || TextUtils.isEmpty(edit_price5.getText().toString())
+                                || TextUtils.isEmpty(edit_address6.getText().toString())
+                                || TextUtils.isEmpty(edit_price6.getText().toString())
+                                || TextUtils.isEmpty(edit_address7.getText().toString())
+                                || TextUtils.isEmpty(edit_price7.getText().toString())
+                                || TextUtils.isEmpty(edit_price8.getText().toString()))
+                            Toast.makeText(getApplicationContext(), "Algún campo está vacío.", Toast.LENGTH_LONG).show();
                         else {
                             String str_spinn_type8 = spinn_type8.getSelectedItem().toString();
                             String str_spinn_type7 = spinn_type7.getSelectedItem().toString();
@@ -399,25 +405,25 @@ public class Transporte extends AppCompatActivity {
                             String str_spinn_type5 = spinn_type5.getSelectedItem().toString();
                             String str_spinn_type4 = spinn_type4.getSelectedItem().toString();
                             Intent intent1 = new Intent(getApplicationContext(), Mapa.class);
-                            intent1.putExtra("posicion",5);
-                            intent1.putExtra("edit"+Integer.toString(1),edit_address4.getText().toString());
-                            intent1.putExtra("lat"+Integer.toString(1),geoLocalizar(edit_address4).latitude);
-                            intent1.putExtra("lng"+Integer.toString(1),geoLocalizar(edit_address4).longitude);
+                            intent1.putExtra("posicion", 5);
+                            intent1.putExtra("edit" + Integer.toString(1), edit_address4.getText().toString());
+                            intent1.putExtra("lat" + Integer.toString(1), geoLocalizar(edit_address4).latitude);
+                            intent1.putExtra("lng" + Integer.toString(1), geoLocalizar(edit_address4).longitude);
                             intent1.putExtra("precio" + Integer.toString(1), edit_price4.getText().toString());
                             intent1.putExtra("tipo" + Integer.toString(1), str_spinn_type4);
-                            intent1.putExtra("edit"+Integer.toString(2),edit_address5.getText().toString());
-                            intent1.putExtra("lat"+Integer.toString(2),geoLocalizar(edit_address5).latitude);
-                            intent1.putExtra("lng"+Integer.toString(2),geoLocalizar(edit_address5).longitude);
+                            intent1.putExtra("edit" + Integer.toString(2), edit_address5.getText().toString());
+                            intent1.putExtra("lat" + Integer.toString(2), geoLocalizar(edit_address5).latitude);
+                            intent1.putExtra("lng" + Integer.toString(2), geoLocalizar(edit_address5).longitude);
                             intent1.putExtra("precio" + Integer.toString(2), edit_price5.getText().toString());
                             intent1.putExtra("tipo" + Integer.toString(2), str_spinn_type5);
-                            intent1.putExtra("edit"+Integer.toString(3),edit_address6.getText().toString());
-                            intent1.putExtra("lat"+Integer.toString(3),geoLocalizar(edit_address6).latitude);
-                            intent1.putExtra("lng"+Integer.toString(3),geoLocalizar(edit_address6).longitude);
+                            intent1.putExtra("edit" + Integer.toString(3), edit_address6.getText().toString());
+                            intent1.putExtra("lat" + Integer.toString(3), geoLocalizar(edit_address6).latitude);
+                            intent1.putExtra("lng" + Integer.toString(3), geoLocalizar(edit_address6).longitude);
                             intent1.putExtra("precio" + Integer.toString(3), edit_price6.getText().toString());
                             intent1.putExtra("tipo" + Integer.toString(3), str_spinn_type6);
-                            intent1.putExtra("edit"+Integer.toString(4),edit_address7.getText().toString());
-                            intent1.putExtra("lat"+Integer.toString(4),geoLocalizar(edit_address7).latitude);
-                            intent1.putExtra("lng"+Integer.toString(4),geoLocalizar(edit_address7).longitude);
+                            intent1.putExtra("edit" + Integer.toString(4), edit_address7.getText().toString());
+                            intent1.putExtra("lat" + Integer.toString(4), geoLocalizar(edit_address7).latitude);
+                            intent1.putExtra("lng" + Integer.toString(4), geoLocalizar(edit_address7).longitude);
                             intent1.putExtra("precio" + Integer.toString(4), edit_price7.getText().toString());
                             intent1.putExtra("tipo" + Integer.toString(4), str_spinn_type7);
                             intent1.putExtra("precio" + Integer.toString(5), edit_price8.getText().toString());
@@ -452,18 +458,18 @@ public class Transporte extends AppCompatActivity {
                 btn_send.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(TextUtils.isEmpty(edit_address3.getText().toString())
-                                ||TextUtils.isEmpty(edit_price3.getText().toString())
-                                ||TextUtils.isEmpty(edit_address4.getText().toString())
-                                ||TextUtils.isEmpty(edit_price4.getText().toString())
-                                ||TextUtils.isEmpty(edit_address5.getText().toString())
-                                ||TextUtils.isEmpty(edit_price5.getText().toString())
-                                ||TextUtils.isEmpty(edit_address6.getText().toString())
-                                ||TextUtils.isEmpty(edit_price6.getText().toString())
-                                ||TextUtils.isEmpty(edit_address7.getText().toString())
-                                ||TextUtils.isEmpty(edit_price7.getText().toString())
-                                ||TextUtils.isEmpty(edit_price8.getText().toString()))
-                            Toast.makeText(getApplicationContext(),"Algún campo está vacío.",Toast.LENGTH_LONG).show();
+                        if (TextUtils.isEmpty(edit_address3.getText().toString())
+                                || TextUtils.isEmpty(edit_price3.getText().toString())
+                                || TextUtils.isEmpty(edit_address4.getText().toString())
+                                || TextUtils.isEmpty(edit_price4.getText().toString())
+                                || TextUtils.isEmpty(edit_address5.getText().toString())
+                                || TextUtils.isEmpty(edit_price5.getText().toString())
+                                || TextUtils.isEmpty(edit_address6.getText().toString())
+                                || TextUtils.isEmpty(edit_price6.getText().toString())
+                                || TextUtils.isEmpty(edit_address7.getText().toString())
+                                || TextUtils.isEmpty(edit_price7.getText().toString())
+                                || TextUtils.isEmpty(edit_price8.getText().toString()))
+                            Toast.makeText(getApplicationContext(), "Algún campo está vacío.", Toast.LENGTH_LONG).show();
                         else {
                             String str_spinn_type8 = spinn_type8.getSelectedItem().toString();
                             String str_spinn_type7 = spinn_type7.getSelectedItem().toString();
@@ -472,30 +478,30 @@ public class Transporte extends AppCompatActivity {
                             String str_spinn_type4 = spinn_type4.getSelectedItem().toString();
                             String str_spinn_type3 = spinn_type3.getSelectedItem().toString();
                             Intent intent1 = new Intent(getApplicationContext(), Mapa.class);
-                            intent1.putExtra("posicion",6);
-                            intent1.putExtra("edit"+Integer.toString(1),edit_address3.getText().toString());
-                            intent1.putExtra("lat"+Integer.toString(1),geoLocalizar(edit_address3).latitude);
-                            intent1.putExtra("lng"+Integer.toString(1),geoLocalizar(edit_address3).longitude);
+                            intent1.putExtra("posicion", 6);
+                            intent1.putExtra("edit" + Integer.toString(1), edit_address3.getText().toString());
+                            intent1.putExtra("lat" + Integer.toString(1), geoLocalizar(edit_address3).latitude);
+                            intent1.putExtra("lng" + Integer.toString(1), geoLocalizar(edit_address3).longitude);
                             intent1.putExtra("precio" + Integer.toString(1), edit_price3.getText().toString());
                             intent1.putExtra("tipo" + Integer.toString(1), str_spinn_type3);
-                            intent1.putExtra("edit"+Integer.toString(2),edit_address4.getText().toString());
-                            intent1.putExtra("lat"+Integer.toString(2),geoLocalizar(edit_address4).latitude);
-                            intent1.putExtra("lng"+Integer.toString(2),geoLocalizar(edit_address4).longitude);
+                            intent1.putExtra("edit" + Integer.toString(2), edit_address4.getText().toString());
+                            intent1.putExtra("lat" + Integer.toString(2), geoLocalizar(edit_address4).latitude);
+                            intent1.putExtra("lng" + Integer.toString(2), geoLocalizar(edit_address4).longitude);
                             intent1.putExtra("precio" + Integer.toString(2), edit_price4.getText().toString());
                             intent1.putExtra("tipo" + Integer.toString(2), str_spinn_type4);
-                            intent1.putExtra("edit"+Integer.toString(3),edit_address5.getText().toString());
-                            intent1.putExtra("lat"+Integer.toString(3),geoLocalizar(edit_address5).latitude);
-                            intent1.putExtra("lng"+Integer.toString(3),geoLocalizar(edit_address5).longitude);
+                            intent1.putExtra("edit" + Integer.toString(3), edit_address5.getText().toString());
+                            intent1.putExtra("lat" + Integer.toString(3), geoLocalizar(edit_address5).latitude);
+                            intent1.putExtra("lng" + Integer.toString(3), geoLocalizar(edit_address5).longitude);
                             intent1.putExtra("precio" + Integer.toString(3), edit_price5.getText().toString());
                             intent1.putExtra("tipo" + Integer.toString(3), str_spinn_type5);
-                            intent1.putExtra("edit"+Integer.toString(4),edit_address6.getText().toString());
-                            intent1.putExtra("lat"+Integer.toString(4),geoLocalizar(edit_address6).latitude);
-                            intent1.putExtra("lng"+Integer.toString(4),geoLocalizar(edit_address6).longitude);
+                            intent1.putExtra("edit" + Integer.toString(4), edit_address6.getText().toString());
+                            intent1.putExtra("lat" + Integer.toString(4), geoLocalizar(edit_address6).latitude);
+                            intent1.putExtra("lng" + Integer.toString(4), geoLocalizar(edit_address6).longitude);
                             intent1.putExtra("precio" + Integer.toString(4), edit_price6.getText().toString());
                             intent1.putExtra("tipo" + Integer.toString(4), str_spinn_type6);
-                            intent1.putExtra("edit"+Integer.toString(5),edit_address7.getText().toString());
-                            intent1.putExtra("lat"+Integer.toString(5),geoLocalizar(edit_address7).latitude);
-                            intent1.putExtra("lng"+Integer.toString(5),geoLocalizar(edit_address7).longitude);
+                            intent1.putExtra("edit" + Integer.toString(5), edit_address7.getText().toString());
+                            intent1.putExtra("lat" + Integer.toString(5), geoLocalizar(edit_address7).latitude);
+                            intent1.putExtra("lng" + Integer.toString(5), geoLocalizar(edit_address7).longitude);
                             intent1.putExtra("precio" + Integer.toString(5), edit_price7.getText().toString());
                             intent1.putExtra("tipo" + Integer.toString(5), str_spinn_type7);
                             intent1.putExtra("precio" + Integer.toString(6), edit_price8.getText().toString());
@@ -525,20 +531,20 @@ public class Transporte extends AppCompatActivity {
                 btn_send.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(TextUtils.isEmpty(edit_address2.getText().toString())
-                                ||TextUtils.isEmpty(edit_price2.getText().toString())
-                                ||TextUtils.isEmpty(edit_address3.getText().toString())
-                                ||TextUtils.isEmpty(edit_price3.getText().toString())
-                                ||TextUtils.isEmpty(edit_address4.getText().toString())
-                                ||TextUtils.isEmpty(edit_price4.getText().toString())
-                                ||TextUtils.isEmpty(edit_address5.getText().toString())
-                                ||TextUtils.isEmpty(edit_price5.getText().toString())
-                                ||TextUtils.isEmpty(edit_address6.getText().toString())
-                                ||TextUtils.isEmpty(edit_price6.getText().toString())
-                                ||TextUtils.isEmpty(edit_address7.getText().toString())
-                                ||TextUtils.isEmpty(edit_price7.getText().toString())
-                                ||TextUtils.isEmpty(edit_price8.getText().toString()))
-                            Toast.makeText(getApplicationContext(),"Algún campo está vacío.",Toast.LENGTH_LONG).show();
+                        if (TextUtils.isEmpty(edit_address2.getText().toString())
+                                || TextUtils.isEmpty(edit_price2.getText().toString())
+                                || TextUtils.isEmpty(edit_address3.getText().toString())
+                                || TextUtils.isEmpty(edit_price3.getText().toString())
+                                || TextUtils.isEmpty(edit_address4.getText().toString())
+                                || TextUtils.isEmpty(edit_price4.getText().toString())
+                                || TextUtils.isEmpty(edit_address5.getText().toString())
+                                || TextUtils.isEmpty(edit_price5.getText().toString())
+                                || TextUtils.isEmpty(edit_address6.getText().toString())
+                                || TextUtils.isEmpty(edit_price6.getText().toString())
+                                || TextUtils.isEmpty(edit_address7.getText().toString())
+                                || TextUtils.isEmpty(edit_price7.getText().toString())
+                                || TextUtils.isEmpty(edit_price8.getText().toString()))
+                            Toast.makeText(getApplicationContext(), "Algún campo está vacío.", Toast.LENGTH_LONG).show();
                         else {
                             String str_spinn_type8 = spinn_type8.getSelectedItem().toString();
                             String str_spinn_type7 = spinn_type7.getSelectedItem().toString();
@@ -548,35 +554,35 @@ public class Transporte extends AppCompatActivity {
                             String str_spinn_type3 = spinn_type3.getSelectedItem().toString();
                             String str_spinn_type2 = spinn_type2.getSelectedItem().toString();
                             Intent intent1 = new Intent(getApplicationContext(), Mapa.class);
-                            intent1.putExtra("posicion",7);
-                            intent1.putExtra("edit"+Integer.toString(1),edit_address2.getText().toString());
-                            intent1.putExtra("lat"+Integer.toString(1),geoLocalizar(edit_address2).latitude);
-                            intent1.putExtra("lng"+Integer.toString(1),geoLocalizar(edit_address2).longitude);
+                            intent1.putExtra("posicion", 7);
+                            intent1.putExtra("edit" + Integer.toString(1), edit_address2.getText().toString());
+                            intent1.putExtra("lat" + Integer.toString(1), geoLocalizar(edit_address2).latitude);
+                            intent1.putExtra("lng" + Integer.toString(1), geoLocalizar(edit_address2).longitude);
                             intent1.putExtra("precio" + Integer.toString(1), edit_price2.getText().toString());
                             intent1.putExtra("tipo" + Integer.toString(1), str_spinn_type2);
-                            intent1.putExtra("edit"+Integer.toString(2),edit_address3.getText().toString());
-                            intent1.putExtra("lat"+Integer.toString(2),geoLocalizar(edit_address3).latitude);
-                            intent1.putExtra("lng"+Integer.toString(2),geoLocalizar(edit_address3).longitude);
+                            intent1.putExtra("edit" + Integer.toString(2), edit_address3.getText().toString());
+                            intent1.putExtra("lat" + Integer.toString(2), geoLocalizar(edit_address3).latitude);
+                            intent1.putExtra("lng" + Integer.toString(2), geoLocalizar(edit_address3).longitude);
                             intent1.putExtra("precio" + Integer.toString(2), edit_price3.getText().toString());
                             intent1.putExtra("tipo" + Integer.toString(2), str_spinn_type3);
-                            intent1.putExtra("edit"+Integer.toString(3),edit_address4.getText().toString());
-                            intent1.putExtra("lat"+Integer.toString(3),geoLocalizar(edit_address4).latitude);
-                            intent1.putExtra("lng"+Integer.toString(3),geoLocalizar(edit_address4).longitude);
+                            intent1.putExtra("edit" + Integer.toString(3), edit_address4.getText().toString());
+                            intent1.putExtra("lat" + Integer.toString(3), geoLocalizar(edit_address4).latitude);
+                            intent1.putExtra("lng" + Integer.toString(3), geoLocalizar(edit_address4).longitude);
                             intent1.putExtra("precio" + Integer.toString(3), edit_price4.getText().toString());
                             intent1.putExtra("tipo" + Integer.toString(3), str_spinn_type4);
-                            intent1.putExtra("edit"+Integer.toString(4),edit_address5.getText().toString());
-                            intent1.putExtra("lat"+Integer.toString(4),geoLocalizar(edit_address5).latitude);
-                            intent1.putExtra("lng"+Integer.toString(4),geoLocalizar(edit_address5).longitude);
+                            intent1.putExtra("edit" + Integer.toString(4), edit_address5.getText().toString());
+                            intent1.putExtra("lat" + Integer.toString(4), geoLocalizar(edit_address5).latitude);
+                            intent1.putExtra("lng" + Integer.toString(4), geoLocalizar(edit_address5).longitude);
                             intent1.putExtra("precio" + Integer.toString(4), edit_price5.getText().toString());
                             intent1.putExtra("tipo" + Integer.toString(4), str_spinn_type5);
-                            intent1.putExtra("edit"+Integer.toString(5),edit_address6.getText().toString());
-                            intent1.putExtra("lat"+Integer.toString(5),geoLocalizar(edit_address6).latitude);
-                            intent1.putExtra("lng"+Integer.toString(5),geoLocalizar(edit_address6).longitude);
+                            intent1.putExtra("edit" + Integer.toString(5), edit_address6.getText().toString());
+                            intent1.putExtra("lat" + Integer.toString(5), geoLocalizar(edit_address6).latitude);
+                            intent1.putExtra("lng" + Integer.toString(5), geoLocalizar(edit_address6).longitude);
                             intent1.putExtra("precio" + Integer.toString(5), edit_price6.getText().toString());
                             intent1.putExtra("tipo" + Integer.toString(5), str_spinn_type6);
-                            intent1.putExtra("edit"+Integer.toString(6),edit_address7.getText().toString());
-                            intent1.putExtra("lat"+Integer.toString(6),geoLocalizar(edit_address7).latitude);
-                            intent1.putExtra("lng"+Integer.toString(6),geoLocalizar(edit_address7).longitude);
+                            intent1.putExtra("edit" + Integer.toString(6), edit_address7.getText().toString());
+                            intent1.putExtra("lat" + Integer.toString(6), geoLocalizar(edit_address7).latitude);
+                            intent1.putExtra("lng" + Integer.toString(6), geoLocalizar(edit_address7).longitude);
                             intent1.putExtra("precio" + Integer.toString(6), edit_price7.getText().toString());
                             intent1.putExtra("tipo" + Integer.toString(6), str_spinn_type7);
                             intent1.putExtra("precio" + Integer.toString(7), edit_price8.getText().toString());
@@ -597,22 +603,22 @@ public class Transporte extends AppCompatActivity {
                 btn_send.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(TextUtils.isEmpty(edit_address1.getText().toString())
-                                ||TextUtils.isEmpty(edit_price1.getText().toString())
-                                ||TextUtils.isEmpty(edit_address2.getText().toString())
-                                ||TextUtils.isEmpty(edit_price2.getText().toString())
-                                ||TextUtils.isEmpty(edit_address3.getText().toString())
-                                ||TextUtils.isEmpty(edit_price3.getText().toString())
-                                ||TextUtils.isEmpty(edit_address4.getText().toString())
-                                ||TextUtils.isEmpty(edit_price4.getText().toString())
-                                ||TextUtils.isEmpty(edit_address5.getText().toString())
-                                ||TextUtils.isEmpty(edit_price5.getText().toString())
-                                ||TextUtils.isEmpty(edit_address6.getText().toString())
-                                ||TextUtils.isEmpty(edit_price6.getText().toString())
-                                ||TextUtils.isEmpty(edit_address7.getText().toString())
-                                ||TextUtils.isEmpty(edit_price7.getText().toString())
-                                ||TextUtils.isEmpty(edit_price8.getText().toString()))
-                            Toast.makeText(getApplicationContext(),"Algún campo está vacío.",Toast.LENGTH_LONG).show();
+                        if (TextUtils.isEmpty(edit_address1.getText().toString())
+                                || TextUtils.isEmpty(edit_price1.getText().toString())
+                                || TextUtils.isEmpty(edit_address2.getText().toString())
+                                || TextUtils.isEmpty(edit_price2.getText().toString())
+                                || TextUtils.isEmpty(edit_address3.getText().toString())
+                                || TextUtils.isEmpty(edit_price3.getText().toString())
+                                || TextUtils.isEmpty(edit_address4.getText().toString())
+                                || TextUtils.isEmpty(edit_price4.getText().toString())
+                                || TextUtils.isEmpty(edit_address5.getText().toString())
+                                || TextUtils.isEmpty(edit_price5.getText().toString())
+                                || TextUtils.isEmpty(edit_address6.getText().toString())
+                                || TextUtils.isEmpty(edit_price6.getText().toString())
+                                || TextUtils.isEmpty(edit_address7.getText().toString())
+                                || TextUtils.isEmpty(edit_price7.getText().toString())
+                                || TextUtils.isEmpty(edit_price8.getText().toString()))
+                            Toast.makeText(getApplicationContext(), "Algún campo está vacío.", Toast.LENGTH_LONG).show();
                         else {
                             String str_spinn_type8 = spinn_type8.getSelectedItem().toString();
                             String str_spinn_type7 = spinn_type7.getSelectedItem().toString();
@@ -623,40 +629,40 @@ public class Transporte extends AppCompatActivity {
                             String str_spinn_type2 = spinn_type2.getSelectedItem().toString();
                             String str_spinn_type1 = spinn_type1.getSelectedItem().toString();
                             Intent intent1 = new Intent(getApplicationContext(), Mapa.class);
-                            intent1.putExtra("posicion",8);
-                            intent1.putExtra("edit"+Integer.toString(1),edit_address1.getText().toString());
-                            intent1.putExtra("lat"+Integer.toString(1),geoLocalizar(edit_address1).latitude);
-                            intent1.putExtra("lng"+Integer.toString(1),geoLocalizar(edit_address1).longitude);
+                            intent1.putExtra("posicion", 8);
+                            intent1.putExtra("edit" + Integer.toString(1), edit_address1.getText().toString());
+                            intent1.putExtra("lat" + Integer.toString(1), geoLocalizar(edit_address1).latitude);
+                            intent1.putExtra("lng" + Integer.toString(1), geoLocalizar(edit_address1).longitude);
                             intent1.putExtra("precio" + Integer.toString(1), edit_price1.getText().toString());
                             intent1.putExtra("tipo" + Integer.toString(1), str_spinn_type1);
-                            intent1.putExtra("edit"+Integer.toString(2),edit_address2.getText().toString());
-                            intent1.putExtra("lat"+Integer.toString(2),geoLocalizar(edit_address2).latitude);
-                            intent1.putExtra("lng"+Integer.toString(2),geoLocalizar(edit_address2).longitude);
+                            intent1.putExtra("edit" + Integer.toString(2), edit_address2.getText().toString());
+                            intent1.putExtra("lat" + Integer.toString(2), geoLocalizar(edit_address2).latitude);
+                            intent1.putExtra("lng" + Integer.toString(2), geoLocalizar(edit_address2).longitude);
                             intent1.putExtra("precio" + Integer.toString(2), edit_price2.getText().toString());
                             intent1.putExtra("tipo" + Integer.toString(2), str_spinn_type2);
-                            intent1.putExtra("edit"+Integer.toString(3),edit_address3.getText().toString());
-                            intent1.putExtra("lat"+Integer.toString(3),geoLocalizar(edit_address3).latitude);
-                            intent1.putExtra("lng"+Integer.toString(3),geoLocalizar(edit_address3).longitude);
+                            intent1.putExtra("edit" + Integer.toString(3), edit_address3.getText().toString());
+                            intent1.putExtra("lat" + Integer.toString(3), geoLocalizar(edit_address3).latitude);
+                            intent1.putExtra("lng" + Integer.toString(3), geoLocalizar(edit_address3).longitude);
                             intent1.putExtra("precio" + Integer.toString(3), edit_price3.getText().toString());
                             intent1.putExtra("tipo" + Integer.toString(3), str_spinn_type3);
-                            intent1.putExtra("edit"+Integer.toString(4),edit_address4.getText().toString());
-                            intent1.putExtra("lat"+Integer.toString(4),geoLocalizar(edit_address4).latitude);
-                            intent1.putExtra("lng"+Integer.toString(4),geoLocalizar(edit_address4).longitude);
+                            intent1.putExtra("edit" + Integer.toString(4), edit_address4.getText().toString());
+                            intent1.putExtra("lat" + Integer.toString(4), geoLocalizar(edit_address4).latitude);
+                            intent1.putExtra("lng" + Integer.toString(4), geoLocalizar(edit_address4).longitude);
                             intent1.putExtra("precio" + Integer.toString(4), edit_price4.getText().toString());
                             intent1.putExtra("tipo" + Integer.toString(4), str_spinn_type4);
-                            intent1.putExtra("edit"+Integer.toString(5),edit_address5.getText().toString());
-                            intent1.putExtra("lat"+Integer.toString(5),geoLocalizar(edit_address5).latitude);
-                            intent1.putExtra("lng"+Integer.toString(5),geoLocalizar(edit_address5).longitude);
+                            intent1.putExtra("edit" + Integer.toString(5), edit_address5.getText().toString());
+                            intent1.putExtra("lat" + Integer.toString(5), geoLocalizar(edit_address5).latitude);
+                            intent1.putExtra("lng" + Integer.toString(5), geoLocalizar(edit_address5).longitude);
                             intent1.putExtra("precio" + Integer.toString(5), edit_price5.getText().toString());
                             intent1.putExtra("tipo" + Integer.toString(5), str_spinn_type5);
-                            intent1.putExtra("edit"+Integer.toString(6),edit_address6.getText().toString());
-                            intent1.putExtra("lat"+Integer.toString(6),geoLocalizar(edit_address6).latitude);
-                            intent1.putExtra("lng"+Integer.toString(6),geoLocalizar(edit_address6).longitude);
+                            intent1.putExtra("edit" + Integer.toString(6), edit_address6.getText().toString());
+                            intent1.putExtra("lat" + Integer.toString(6), geoLocalizar(edit_address6).latitude);
+                            intent1.putExtra("lng" + Integer.toString(6), geoLocalizar(edit_address6).longitude);
                             intent1.putExtra("precio" + Integer.toString(6), edit_price6.getText().toString());
                             intent1.putExtra("tipo" + Integer.toString(6), str_spinn_type6);
-                            intent1.putExtra("edit"+Integer.toString(7),edit_address7.getText().toString());
-                            intent1.putExtra("lat"+Integer.toString(7),geoLocalizar(edit_address7).latitude);
-                            intent1.putExtra("lng"+Integer.toString(7),geoLocalizar(edit_address7).longitude);
+                            intent1.putExtra("edit" + Integer.toString(7), edit_address7.getText().toString());
+                            intent1.putExtra("lat" + Integer.toString(7), geoLocalizar(edit_address7).latitude);
+                            intent1.putExtra("lng" + Integer.toString(7), geoLocalizar(edit_address7).longitude);
                             intent1.putExtra("precio" + Integer.toString(7), edit_price7.getText().toString());
                             intent1.putExtra("tipo" + Integer.toString(7), str_spinn_type7);
                             intent1.putExtra("precio" + Integer.toString(8), edit_price8.getText().toString());
@@ -667,7 +673,8 @@ public class Transporte extends AppCompatActivity {
                 });
 
                 break;
-        }
+
+            }
     }
 
     @Override
@@ -683,19 +690,18 @@ public class Transporte extends AppCompatActivity {
     private LatLng geoLocalizar(EditText edit_address){
         String buscador = edit_address.getText().toString();
         Geocoder geocodificador = new Geocoder(getApplicationContext());
-        List<Address> lista = new ArrayList<>();
+        List<Address> lista;
 
         try {
             lista = geocodificador.getFromLocationName(buscador,1);
+            Address direccion = lista.get(0);
+            Log.d("DIRECCION","Dirección: "+direccion.toString());
+            LatLng latlngDireccion = new LatLng(direccion.getLatitude(),direccion.getLongitude());
+            return latlngDireccion;
         }catch (IOException e){
             Log.e("ERROR1","Geolocalizar: IOException"+e.getMessage());
+            LatLng latlngDireccion = new LatLng(0,0);
+            return latlngDireccion;
         }
-
-        Address direccion = lista.get(0);
-        Log.d("DIRECCION","Dirección: "+direccion.toString());
-
-        LatLng latlngDireccion = new LatLng(direccion.getLatitude(),direccion.getLongitude());
-
-        return latlngDireccion;
     }
 }

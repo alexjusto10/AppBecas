@@ -42,7 +42,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="#0aa5ba"
-        android:text="@string/main_menu"
+        android:text="@string/btn_cancel"
         android:textColor="#FFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/fragmentoMapa"

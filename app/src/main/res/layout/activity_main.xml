@@ -1,87 +1,250 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <TextView
-        android:id="@+id/lbDatos2"
-        android:layout_width="wrap_content"
+    android:fillViewport="true">
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/txt_data"
-        android:textColor="#0aa5ba"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btn_mapa"
-        style="@android:style/Widget.Material.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:backgroundTint="#0aa5ba"
-        android:text="@string/btn_send"
-        android:textAppearance="@android:style/TextAppearance.Material.Widget.Button"
-        android:textColor="@color/common_google_signin_btn_text_dark_default"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.971"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_transp"
-        app:layout_constraintVertical_bias="0.0"
-        tools:targetApi="m" />
+        <TextView
+            android:id="@+id/lbDatos2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/txtDocuments"
+            android:textColor="#0aa5ba"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/spin_cantidad"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="75dp"
-        android:layout_marginEnd="75dp"
-        android:entries="@array/transport_quantity"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_mapa"
-        app:layout_constraintEnd_toStartOf="@+id/btn_mapa"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btn_mapa"></Spinner>
+        <Button
+            android:id="@+id/btn_mapa"
+            style="@android:style/Widget.Material.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#0aa5ba"
+            android:text="@string/btn_send"
+            android:textAppearance="@android:style/TextAppearance.Material.Widget.Button"
+            android:textColor="@color/common_google_signin_btn_text_dark_default"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spin_cantidad"
+            app:layout_constraintVertical_bias="0.0"
+            tools:targetApi="m" />
 
-    <TextView
-        android:id="@+id/txt_transp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/transport"
-        android:textAppearance="@android:style/TextAppearance.Material.Body1"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        <Spinner
+            android:id="@+id/spin_cantidad"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:entries="@array/transport_quantity"
+            android:minWidth="100dp"
+            app:layout_constraintEnd_toStartOf="@+id/btn_mapa"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/txtTransp2"
+            app:layout_constraintTop_toBottomOf="@+id/txtTransp2"></Spinner>
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/warning"
-        android:textAppearance="@android:style/TextAppearance.Material.Body2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lbDatos2"
-        app:layout_constraintVertical_bias="0.0" />
+        <TextView
+            android:id="@+id/txtTransp2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:text="@string/transport"
+            android:textAppearance="@android:style/TextAppearance.Material.Body1"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtTransp1" />
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/txtTransp1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/warning"
+            android:textAppearance="@android:style/TextAppearance.Material.Body2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnActv"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/socio"
+            android:textAppearance="@android:style/TextAppearance.Material.Body1"
+            app:layout_constraintBottom_toBottomOf="@+id/btnEstudio"
+            app:layout_constraintEnd_toStartOf="@+id/btnEstudio"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btnEstudio" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/cart_comp"
+            android:textAppearance="@android:style/TextAppearance.Material.Body1"
+            app:layout_constraintBottom_toBottomOf="@+id/btnCarta"
+            app:layout_constraintEnd_toStartOf="@+id/btnCarta"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btnCarta" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/ingr_egr"
+            android:textAppearance="@android:style/TextAppearance.Material.Body1"
+            app:layout_constraintBottom_toBottomOf="@+id/btnIngrEgr"
+            app:layout_constraintEnd_toStartOf="@+id/btnCarta"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btnIngrEgr" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/dom"
+            android:textAppearance="@android:style/TextAppearance.Material.Body1"
+            app:layout_constraintBottom_toBottomOf="@+id/btnDom"
+            app:layout_constraintEnd_toStartOf="@+id/btnCarta"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btnDom" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/ingr"
+            android:textAppearance="@android:style/TextAppearance.Material.Body1"
+            app:layout_constraintBottom_toBottomOf="@+id/btnIngr"
+            app:layout_constraintEnd_toStartOf="@+id/btnCarta"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btnIngr" />
+
+        <TextView
+            android:id="@+id/txtActv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/actv"
+            android:textAppearance="@android:style/TextAppearance.Material.Body1"
+            app:layout_constraintBottom_toBottomOf="@+id/btnActv"
+            app:layout_constraintEnd_toStartOf="@+id/btnCarta"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btnActv" />
+
+        <Button
+            android:id="@+id/btnEstudio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:backgroundTint="#0aa5ba"
+            android:text="@string/upload"
+            android:textColor="#FFF"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lbDatos2" />
+
+        <Button
+            android:id="@+id/btnCarta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:backgroundTint="#0aa5ba"
+            android:text="@string/upload"
+            android:textColor="#FFF"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnEstudio" />
+
+        <Button
+            android:id="@+id/btnIngrEgr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:backgroundTint="#0aa5ba"
+            android:text="@string/upload"
+            android:textColor="#FFF"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnCarta" />
+
+        <Button
+            android:id="@+id/btnDom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:backgroundTint="#0aa5ba"
+            android:text="@string/upload"
+            android:textColor="#FFF"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnIngrEgr" />
+
+        <Button
+            android:id="@+id/btnIngr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:backgroundTint="#0aa5ba"
+            android:text="@string/upload"
+            android:textColor="#FFF"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnDom" />
+
+        <Button
+            android:id="@+id/btnActv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:backgroundTint="#0aa5ba"
+            android:text="@string/upload"
+            android:textColor="#FFF"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnIngr" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

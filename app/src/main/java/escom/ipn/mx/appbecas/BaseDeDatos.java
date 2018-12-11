@@ -1,4 +1,4 @@
-package escom.ipn.mx.appbecas;
+﻿package escom.ipn.mx.appbecas;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -53,9 +53,6 @@ public class BaseDeDatos extends SQLiteOpenHelper { //HELPER PARA LA BD
 
         db.execSQL("INSERT INTO Alumno(boleta, nombre, paterno, materno, promedio, adeudos) " +
                 "VALUES ('2014090365', 'Jaime Alejandro', 'Justo', 'Vizcarra', 8.3, 0)");
-
-        db.execSQL("INSERT INTO Alumno(boleta, nombre, paterno, materno, promedio, adeudos) " +
-                "VALUES ('2017000000', 'Berenice', 'Maya', 'Calderón', 8.3, 1)");
 
         db.execSQL("INSERT INTO Alumno(boleta, nombre, paterno, materno, promedio, adeudos) " +
                 "VALUES ('2017612210', 'Miguel', 'Correa', 'Medina', 6.9, 2)");
